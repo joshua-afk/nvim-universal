@@ -7,3 +7,6 @@ vim.cmd('abb vdiff vertical diffsplit')
 
 -- Telescope commands shortcuts
 vim.cmd('abb tgrep lua require("telescope.builtin").live_grep { noremap = true, prompt_title="Grep with Filtered Files", additional_args=function() return {"-g*.js"} end}')
+
+-- Git Blame
+vim.cmd('abb gblame GitBlameToggle')
