@@ -17,12 +17,6 @@ require("lazy").setup({
 
   -- Core
   'nvim-lua/plenary.nvim',
-  {
-    'numToStr/Comment.nvim',
-    config = function()
-      require("Comment").setup()
-    end,
-  },
   'chrisbra/vim-diff-enhanced',
   'junegunn/vim-easy-align',
   'notjedi/nvim-rooter.lua',
@@ -46,8 +40,8 @@ require("lazy").setup({
   'nvim-lua/plenary.nvim',
   'nvim-telescope/telescope.nvim',
 
-  -- Copilot
-  'github/copilot.vim',
+  -- -- Copilot
+  -- 'github/copilot.vim',
 
   -- Linting
   'mfussenegger/nvim-lint',
@@ -90,7 +84,6 @@ require("lazy").setup({
 
   -- Etc
   'tpope/vim-eunuch',
-  -- 'JoosepAlviste/nvim-ts-context-commentstring',
   {
     'stevearc/dressing.nvim',
     opts = {}
