@@ -85,3 +85,7 @@ api.nvim_set_keymap('n', '<leader>fr', ':Telescope resume <cr>', { noremap = tru
 api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle <cr>', { noremap = true })
 api.nvim_set_keymap('n', '<leader>r', ':NvimTreeRefresh <cr>', { noremap = true })
 api.nvim_set_keymap('n', '<leader>n', ':NvimTreeFindFile <cr>', { noremap = true })
+
+-- Lazygit
+api.nvim_set_keymap('n', '<leader>lg', ':LazyGit <cr>', { noremap = true })
+api.nvim_set_keymap('n', '<leader>lgc', ':LazyGitFilterCurrentFile <cr>', { noremap = true })

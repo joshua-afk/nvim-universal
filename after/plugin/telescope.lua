@@ -2,7 +2,7 @@ local telescope = require('telescope')
 
 -- Options
 local ignore_these = {
-  '.git',
+  '.git/.*',
   '.yarn',
   '.neuron',
   'node_modules',
