@@ -9,7 +9,10 @@ require("mason").setup {
 }
 
 require("mason-lspconfig").setup {
-    ensure_installed = { "lua_ls", "eslint", "rubocop" },
+  ensure_installed = {
+    "lua_ls",
+    "eslint",
+  },
 }
 
 -- local on_attach = function(client, bufnr)
@@ -19,37 +22,21 @@ vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
 --   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
 --   vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, bufopts)
 -- end
--- error = "",
-      -- warning = "",
-      -- hint = "",
-      -- information = "",
-      -- other = "",
 
 fn.sign_define("DiagnosticSignError", { text = '', texthl = "DiagnosticSignError" })
 fn.sign_define("DiagnosticSignWarn", { text = '', texthl = "DiagnosticSignWarn" })
 fn.sign_define("DiagnosticSignInfo", { text = '', texthl = "DiagnosticSignInfo" })
 fn.sign_define("DiagnosticSignHint", { text = '', texthl = "DiagnosticSignHint" })
 
--- for type, icon in pairs(signs) do
---   local hl = "LspDiagnosticsSign" .. type
---   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
--- end
-
---
--- fn.sign_define(
---     'DiagnosticSignError',
---     { text = '', texthl = 'LspDiagnosticsDefaultError' }
--- )
---
--- fn.sign_define(
---     'DiagnosticSignWarn',
---
--- )
-
-
+local util = require 'lspconfig.util'
 local lspconfig = require('lspconfig')
 
 lspconfig.lua_ls.setup({})
+lspconfig.rubocop.setup({
+  cmd = { "bundle", "exec", "rubocop", "--lsp" },
+  filetypes = { "ruby" },
+  root_dir = util.root_pattern('Gemfile', '.git'),
+})
 
 -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
 -- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
