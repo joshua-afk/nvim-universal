@@ -16,7 +16,7 @@ require("lazy").setup({
   { import = "plugins" },
 
   -- Core
-  'nvim-lua/plenary.nvim',
+  -- 'nvim-lua/plenary.nvim',
   'chrisbra/vim-diff-enhanced',
   'junegunn/vim-easy-align',
   'notjedi/nvim-rooter.lua',
@@ -59,21 +59,21 @@ require("lazy").setup({
   -- Git
   'tpope/vim-fugitive',
   --'f-person/git-blame.nvim',
-  'kdheepak/lazygit.nvim',
+  -- 'kdheepak/lazygit.nvim',
 
   -- Theme
   -- { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 
   -- LSP
-  'williamboman/mason.nvim',
-  'williamboman/mason-lspconfig.nvim',
-  'neovim/nvim-lspconfig',
-  'onsails/lspkind.nvim',
+  -- 'williamboman/mason.nvim',
+  -- 'williamboman/mason-lspconfig.nvim',
+  -- 'neovim/nvim-lspconfig',
+  -- 'onsails/lspkind.nvim',
 
   -- SNIPPET
   'L3MON4D3/LuaSnip',
   'hrsh7th/nvim-cmp',
-  'hrsh7th/cmp-nvim-lsp',
+  -- 'hrsh7th/cmp-nvim-lsp',
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-path',
   'hrsh7th/cmp-cmdline',
