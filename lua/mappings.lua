@@ -80,3 +80,8 @@ api.nvim_set_keymap('n', '<leader>fs', ':lua require("telescope.builtin").git_st
 
 -- Telescope (Misc)
 api.nvim_set_keymap('n', '<leader>fr', ':Telescope resume <cr>', { noremap = true })
+
+-- nvim-tree
+api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle <cr>', { noremap = true })
+api.nvim_set_keymap('n', '<leader>r', ':NvimTreeRefresh <cr>', { noremap = true })
+api.nvim_set_keymap('n', '<leader>n', ':NvimTreeFindFile <cr>', { noremap = true })
