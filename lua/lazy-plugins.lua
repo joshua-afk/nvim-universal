@@ -19,7 +19,6 @@ require("lazy").setup({
   -- 'nvim-lua/plenary.nvim',
   'chrisbra/vim-diff-enhanced',
   'junegunn/vim-easy-align',
-  'notjedi/nvim-rooter.lua',
   'lukas-reineke/indent-blankline.nvim',
   'nvim-tree/nvim-tree.lua',
   'nvim-tree/nvim-web-devicons',
