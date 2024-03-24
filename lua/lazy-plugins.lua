@@ -16,12 +16,9 @@ require("lazy").setup({
   { import = "plugins" },
 
   -- Core
-  -- 'nvim-lua/plenary.nvim',
   'chrisbra/vim-diff-enhanced',
   'junegunn/vim-easy-align',
   'lukas-reineke/indent-blankline.nvim',
-  'nvim-tree/nvim-tree.lua',
-  'nvim-tree/nvim-web-devicons',
   'tpope/vim-surround',
   'tpope/vim-repeat',
   'jiangmiao/auto-pairs',
@@ -31,11 +28,6 @@ require("lazy").setup({
   'MattesGroeger/vim-bookmarks',
   'psliwka/vim-smoothie',
   'unblevable/quick-scope',
-  'nvim-tree/nvim-tree.lua',
-
-  -- Telescope
-  'nvim-lua/plenary.nvim',
-  'nvim-telescope/telescope.nvim',
 
   -- -- Copilot
   -- 'github/copilot.vim',
