@@ -18,7 +18,6 @@ require("lazy").setup({
   -- Core
   'chrisbra/vim-diff-enhanced',
   'junegunn/vim-easy-align',
-  'lukas-reineke/indent-blankline.nvim',
   'tpope/vim-surround',
   'tpope/vim-repeat',
   'jiangmiao/auto-pairs',
