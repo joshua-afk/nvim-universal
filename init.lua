@@ -1,10 +1,11 @@
 -- Global variables
-g = vim.g
-o = vim.o
-fn = vim.fn
-opt = vim.opt
 api = vim.api
+fn = vim.fn
+g = vim.g
 keymap = vim.keymap
+loop = vim.loop
+o = vim.o
+opt = vim.opt
 
 -- Disable providers
 g.loaded_perl_provider = 0
