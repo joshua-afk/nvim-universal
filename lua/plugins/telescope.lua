@@ -29,7 +29,6 @@ return {
       telescope.setup({
         defaults = {
           color_devicons = true,
-          layout_strategy = 'flex',
           file_ignore_patterns = ignore_these,
         },
         pickers = {
