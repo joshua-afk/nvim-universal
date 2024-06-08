@@ -16,6 +16,9 @@ local plugins = {
   { import = "plugins" },
   { import = "plugins.completion" },
   { import = "plugins.lsp" },
+  { import = "plugins.obsidian" },
+
+  'nvim-pack/nvim-spectre',
 
   -- Core
   'chrisbra/vim-diff-enhanced',

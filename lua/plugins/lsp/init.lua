@@ -17,10 +17,13 @@ return {
 
       -- Docs & completion for nvim lua API
       "folke/neodev.nvim",
+
+      "nvimtools/none-ls.nvim",
     },
     config = function()
       local util = require 'lspconfig.util'
       local lspconfig = require('lspconfig')
+      local null_ls = require("null-ls")
 
       -- Initialize neodev
       require('neodev').setup()
@@ -41,7 +44,16 @@ return {
         ensure_installed = {
           "lua_ls",
           "eslint",
-          "rubocop",
+          -- "eslint_d",
+          -- "rubocop",
+        },
+      })
+
+      null_ls.setup({
+        sources = {
+          null_ls.builtins.formatting.stylua,
+          null_ls.builtins.completion.spell,
+          -- require("none-ls.diagnostics.eslint"), -- requires none-ls-extras.nvim
         },
       })
 
@@ -54,13 +66,13 @@ return {
       -- List of lsp servers to configure
       local servers = {
         lua_ls = {},
-        rubocop = {
-          settings ={
-            cmd = { "bundle", "exec", "rubocop", "--lsp" },
-            filetypes = { "ruby" },
-            root_dir = util.root_pattern('Gemfile', '.git'),
-          }
-        },
+        -- rubocop = {
+        --   settings ={
+        --     cmd = { "bundle", "exec", "rubocop", "--lsp" },
+        --     filetypes = { "ruby" },
+        --     root_dir = util.root_pattern('Gemfile', '.git'),
+        --   }
+        -- },
       }
 
       -- Default handlers for LSP

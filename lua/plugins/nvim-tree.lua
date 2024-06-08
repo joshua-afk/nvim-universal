@@ -31,7 +31,7 @@ return {
           timeout = 400,
         },
         view = {
-          width = 30
+          width = 45
         }
       })
     end
