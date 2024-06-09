@@ -4,7 +4,6 @@ return {
     dependencies = {
       -- Snippets
       'L3MON4D3/LuaSnip',
-      'rafamadriz/friendly-snippets',
 
       -- cmp sources
       'hrsh7th/cmp-buffer',
@@ -17,21 +16,29 @@ return {
       local luasnip = require("luasnip")
       local lspkind = require("lspkind")
 
-      -- local vscode_snippets_path = vim.fn.stdpath('config')..'/snippets/vscode'
-      --local snipmate_snippets_path = vim.fn.stdpath('config')..'/snippets/snipmate'
+      --## LuaSnip
+      local snipmate_snippets_path = vim.fn.stdpath('config')..'/snippets/snipmate'
       local catppuccin_color = require("catppuccin.palettes").get_palette()
 
-      require("luasnip.loaders.from_vscode").lazy_load()
-      --require("luasnip.loaders.from_vscode").lazy_load({ paths = { vscode_snippets_path } })
-      --require("luasnip.loaders.from_snipmate").lazy_load({ paths = { snipmate_snippets_path } })
+      -- Extend Snippets 
+      luasnip.filetype_extend("javascript", {
+        "javascript-axios",
+        "javascript-express",
+        "javascript-moment",
+        "javascript-mssql",
+        "javascript-node",
+        "javascript-webix"
+      })
 
+      require("luasnip.loaders.from_snipmate").lazy_load({ paths = { snipmate_snippets_path } })
+
+      --## CMP
       local has_words_before = function()
         if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))
         return col ~= 0 and vim.api.nvim_buf_get_text(0, line-1, 0, line-1, col, {})[1]:match("^%s*$") == nil
       end
 
-      -- CMP
       cmp.setup {
         window = {
           completion = {

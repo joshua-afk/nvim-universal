@@ -1,0 +1,393 @@
+# ========================= #
+#
+# CONTENTS
+#
+#  = VANILLA/STANDARD
+#    = ARRAY
+#    = CONDITIONS
+#    = DOCUMENT
+#    = ELEMENT
+#    = FUNCTION
+#    = LOOPS
+#    = PROMISE
+#    = STANDARD
+#    = TRANSFORM
+#    = CHECKERS
+#    = ERROR-HANDLING
+#    = EVENTS
+#    = METHODS
+#    = HTML-DOM
+#    = ARRAY
+#    = CREATE-ELEMENTS
+#    = WINDOW
+#    = STRING
+#
+#  = CUSTOM
+#    = CUSTOM-VANILLA-FUNCTIONS
+#    = CUSTOM-OUTPUTS
+#    = CUSTOM-ARRAY
+#
+# ========================= #
+
+# == ARRAY ==
+snippet includes "ARRAY: The includes() method of Array instances determines whether an array includes a certain value among its entries, returning true or false as appropriate"
+		const array = ['hello', world];
+		array.includes('world')
+# == CONDITIONS ==
+snippet if "CONDITIONS: if statement"
+		if ($1) {
+			$0
+		}
+snippet ifelse "CONDITIONS: ifelse statement"
+		if ($1) {
+			$2
+		} else {
+			$0
+		}
+snippet switch "CONDITIONS: switch case"
+		switch (expression) {
+			case x:
+				// code block
+				break;
+			case y:
+				// code block
+				break;
+			default:
+				// code block
+		}
+snippet array-true "CONDITIONS: check if array has value"
+		// if only
+		if (!!array.length) {
+			console.log('true');
+		}
+
+		// if-else
+		if (array.length) {
+			console.log('true')
+		} else {
+			console.log('false')
+		}
+
+		// validator
+		const hasValue = !!array.length
+
+		// readable
+		if (array.length != 0) {
+			// code here
+		}
+
+		if (array.length > 0) {
+			// code here
+		}
+# == DOCUMENT ==
+snippet query-selector "DOCUMENT: returns the first Element within the document that matches the specified selector, or group of selectors. If no matches are found, null is returned"
+		querySelector('[data-element-type]')
+snippet query-selector-all "DOCUMENT: returns a static (not live) NodeList representing a list of the document's elements that match the specified group of selectors"
+		querySelectorAll('[data-element-type]')
+# == ELEMENT ==
+snippet get-attribute "ELEMENT: returns the value of a specified attribute on the element"
+		getAttribute('[data-element-type]')
+# == FUNCTION ==
+snippet arrow-function "FUNCTION: different styles of arrow function"
+		const arrowFunction = _ => console.log(\`sample\`)
+# == LOOPS ==
+snippet for "LOOP: for loop"
+		for (let i = 0; i < obj.length; i++) {
+		}
+snippet forin "LOOPS: forin loop (index)"
+		for (const index in $1) {
+			$0
+		}
+snippet forof "LOOPS: forof loop (values)"
+		for (const key of $1) {
+			$0
+		}
+snippet foreach "LOOPS: foreach loop 1 liner"
+		array1.forEach(element => console.log(element));
+snippet loop-break "LOOPS:  statement terminates the current loop"
+		break
+snippet loop-continue "LOOPS: statement terminates execution of the statements in the current iteration of the current or labeled loop, and continues execution of the loop with the next iteration."
+		continue
+# == PROMISE ==
+snippet promise-then-catch "PROMISE: Object represents the eventual completion (or failure) of an asynchronous operation and its resulting value."
+		new Promise((resolve, reject) => {
+			throw new Error('Attachment cannot be empty, Please add attachment.')
+		})
+		.then(function() {
+			console.log('hello')
+		})
+		.catch((err) => {
+			console.error(\`Error: ${err.message}\`);
+		});
+# == STANDARD ==
+snippet cl "STANDARD: console.log"
+		console.log($1);
+snippet clv "STANDARD: console.log with key and value"
+		console.log('$1', $2);
+snippet settimeout "STANDARD: set timeout"
+		setTimeout(() => {
+			console.log("Delayed for 1 second.");
+		}, "1000")
+snippet push "STANDARD: push value to array"
+		@array.push(newValue)
+snippet replaceChild "STANDARD: replace specific child of node"
+		parentNode.replaceChild(newChildNode, parentNode.childNodes[0])
+snippet cloneNode "STANDARD: clone a javascript node"
+		element.cloneNode(true)
+snippet custom-route-data-by-id "STANDARD: custom route"
+		router.post('/data_by_id', async (req, res) => {
+			try {
+				const id = req.body.id
+				const sess = res.locals.session
+				const sqlConn = res.locals.sqlConn
+
+				const accessKey = ['Positions.New','Positions.Open']
+				const securityKey = await Db.getPPHSecurityKey(res, accessKey)
+
+				let hasAccess = Object.keys(securityKey).length > 0 ? true : false
+
+				if (hasAccess) {
+					const result = await sqlConn.request()
+						.input('id', sql.Int, id)
+						.input('company_id', sql.Int, sess.company_id)
+						.query(`SELECT Id, Code, Name, Ranking, Active
+									FROM tblPositions p
+									WHERE p.Id = @id AND p.CompanyId = @company_id`)
+
+					res.json(result.recordset)
+				}
+				else {
+					res.json({error_message: 'Access Denied', id: id})
+				}
+			}
+			catch (err) {
+				res.json({error_message: err.message, id})
+			}
+		})
+# == TRANSFORM ==
+snippet parse-int "TRANSFORM: parse value to int"
+		parseInt(var)
+snippet parse-float "TRANSFORM: parse value to float"
+		parseFloat(var)
+snippet parse-json "TRANSFORM: parse value to json"
+		JSON.parse(var)
+snippet json-stringify "TRANSFORM: parse value from JSON object to string"
+		JSON.stringify(obj)
+snippet parse-string "TRANSFORM: parse value to string"
+		String(var)
+snippet parse-upper-case "TRANSFORM: transform text to uppercase"
+		var.toUpperCase()
+snippet parse-lower-case "TRANSFORM: transform text to lowercase"
+		var.toLowerCase()
+snippet parse-absolute "TRANSFORM: negative to possitive number"
+		Math.abs(var)
+snippet parse-boolean "TRANSFORM: string boolean to boolean"
+		const IsActive = ('true' === 'true')
+		// OR
+		const IsActive = JSON.parse("TRUE".toLowerCase())
+# == CHECKERS ==
+snippet check-if-undefined "CHECKERS: check if variable is undefined"
+		if (typeof myVar !== 'undefined')
+snippet check-if-has-classname "CHECKERS: check if element has classname"
+		element.classList.contains('sample-class');
+snippet check-if-has-character "CHECKERS: returns true if a string contains a specified string."
+		element.classList.contains('world')
+snippet is-blank "CHECKERS: isBlank from RoR"
+		var isBlank = function (value) {
+				return value == undefined || value == null || value.toString() == '';
+		};
+# == ERROR-HANDLING ==
+snippet try-catch "ERROR-HANDLING: try catch validation"
+		try {
+			$0
+		} catch (err) {
+			console.error('Error: ' + err.message)
+		}
+snippet try-catch-finally "ERROR-HANDLING: try catch finally validation"
+		try {
+			$0
+		} catch (err) {
+			console.error('Error: ' + err.message)
+		} finally {
+			// finallyCode - Code block to be executed regardless of the try result
+		}
+snippet throw "ERROR-HANDLING: skip the block and throw an error"
+		throw 'Attachment cannot be empty, Please add attachment.'
+		throw new Error('Required') // generates an error object with the message of Required
+# == EVENTS ==
+snippet event-prevent-default "EVENTS: remove element default action"
+		e.preventDefault()
+snippet event-click "EVENTS: element click event"
+		form.onclick = e => { }
+
+		// OR
+
+		element.addEventListener('click', function(e) {})
+snippet event-submit "EVENTS: form submit event"
+		form.onsubmit = e => {}
+
+		// OR
+
+		form.addEventListener('submit', function(e) {})
+snippet event-keypress "EVENTS: use this instead of keypress"
+		// WARNING! DEPRECATED: Use "keydown" instead.
+		document.onkeypress = e => {}
+
+		// OR
+
+		document.addEventListener("keypress", (event) => {})
+snippet event-keydown "EVENTS: use this instead of keypress"
+		document.onkeydown = e => {}
+
+		// OR
+
+		document.addEventListener("keydown", (event) => {});
+snippet event-contextmenu "EVENTS: fires when the user attempts to open a context menu"
+		document.oncontextmenu  = e => {}
+
+		// OR
+
+		document.addEventListener("contextmenu ", (event) => {});
+snippet event-mousemove "EVENTS: fired at an element when a pointing device (usually a mouse) is moved while the cursor's hotspot is inside it"
+		document.onmousemove = e => {}
+
+		// OR
+
+		document.addEventListener("mousemove ", (event) => {});
+snippet event-focus "EVENTS: fires when an element has received focus"
+		document.onfocus  = e => {}
+ 
+		// OR
+
+		document.addEventListener("focus ", (event) => {});
+snippet event-mousehover "EVENTS: mouseover"
+		document.onmouseover  = e => {}
+
+		// OR
+
+		document.addEventListener("mouseover ", (event) => {});
+snippet event-mouseover "EVENTS: fired at an Element when a pointing device (such as a mouse or trackpad) is used to move the cursor onto the element or one of its child elements"
+		document.onmouseover  = e => {}
+
+		// OR
+
+		document.addEventListener("mouseover ", (event) => {});
+snippet event-oninput "EVENTS: event fires when the value of an <input>, <select>, or <textarea> element has been changed as a direct result of a user action (such as typing in a textbox or checking a checkbox)."
+		element.oninput = e => {}
+
+		// OR
+
+		element.addEventListener("input", (event) => {})
+# == HTML-DOM ==
+snippet dom-set-attribute "EVENTS: sets the value of an attribute on the specified element"
+		element.setAttribute(name, value)
+snippet dom-remove-attribute "EVENTS: removes the attribute with the specified name from the element"
+		element.removeAttribute(attributeName)
+snippet dom-class-list "EVENTS: collection of the class attributes of the element"
+		element.classList
+snippet dom-add-class "EVENTS: add class to element class list"
+		element.classList.add('enabled')
+snippet dom-remove-class "EVENTS: remove class to element class list"
+		element.classList.remove('enabled')
+# == CREATE-ELEMENTS ==
+snippet create-element-div "CREATE: create div element"
+		let div = ''
+		div = document.createElement('div')
+		div.setAttribute('height', '100px')
+		div.setAttribute('width', '100px')
+		container.classList.add('generated-input-field')
+snippet create-element-p "CREATE: create p element"
+		const p = document.createElement("p")
+		const text = document.createTextNode('This is sample text')
+		p.appendChild(text)
+# == WINDOW ==
+snippet alert "WINDOW: instructs the browser to display a dialog with an optional message"
+		alert(\`testing\`)
+# == STRING ==
+snippet includes "STRING: The includes() method of String values performs a case-sensitive search to determine whether a given string may be found within this string, returning true or false as appropriate."
+		String.prototype.includes('test') ? true : false ;
+# == CUSTOM-VANILLA-FUNCTIONS ==
+snippet custom-date-ordinal
+		var prefix = function (day) {
+				var prfx = '';
+				if (day == 1) {
+						prfx = 'st';
+				} else if (day == 2) {
+						prfx = 'nd';
+				} else if (day == 3) {
+						prfx = 'rd';
+				} else {
+						prfx = 'th';
+				}
+				return prfx;
+		};
+snippet get-data-hour-minute-second
+    const dateTime = new Date()
+    const date = ("0" + dateTime.getDate()).slice(-2)
+    const hour = dateTime.getHours()
+    const minute = dateTime.getMinutes()
+    const seconds = dateTime.getSeconds()
+snippet change-object-key-value
+		Object.entries(res).map(([key, value]) => {
+			res[key]['Name'] = String(value)
+		})
+snippet change-object-key-name
+	delete Object.assign(object, {[newKey]: object[oldKey] })[oldKey];
+snippet remove-multiple-object-key
+		var obj = {a: 1, b: 2, c: 3, d: 4, e: 5 }
+		['c', 'e'].forEach(k => delete obj[k])
+snippet date-add-day
+		const dateCreated = new Date(obj['DateCreated'])
+		const day = (24*60*60*1000)
+		res['ExpirationDate'] = new Date(dateCreated.getTime() + 1 * day)
+snippet date-date-parse
+		res.CreationDate = res.CreationDate.toISOString().slice(0, 10).replace('T', ' ')
+		// OR (moment.js, better use this)
+		res.CreationDate = moment(res.CreationDate).format('YYYY-MM-DD')
+snippet copy-object
+		// spread method
+		let obj2 = {...obj1}
+snippet string-array-to-array
+		// Needs to be double quote
+    const stringArray = '["PDF", "DOC", "DOCX", "BMP" "XLS", "XLSX", "CSV", "TXT" "JPG", "JPEG", "TIF", "RTF" "TIFF", "GIF", "PNG", "ZIP"]'
+    const parsedArray = JSON.parse(stringArray)
+snippet concatinate-url
+		let url = \`/api/download_document\`
+		url += \`?hash=${String(pdf.hash)}\`
+		url += \`&originalFileName=${originalFileName}\`
+		url += \`&storageFileName=${storageFileName}\`
+snippet remove-px
+		// Removes the text and retain the number
+		parseInt(element.style.width, 10)
+
+		// OR
+
+		// For decimals
+		parseFloat(element.style.width, 10)
+# == CUSTOM-OUTPUTS ==
+snippet custom-route
+		custom?custom_url=custom_employee/import
+snippet dum
+		console.log('dummy output!')
+snippet dumm
+		console.log('dummy output!!')
+snippet dummm
+		console.log('dummy output!!!')
+snippet dummmm
+		console.log('dummy output!!!!')
+snippet dummmmm
+		console.log('dummy output!!!!!')
+# == CUSTOM-ARRAY ==
+snippet custom-array-remove-item "EVENTS: sets the value of an attribute on the specified element"
+		let indexToRemove = arrayName.indexOf(key)
+
+		if (indexToRemove !== -1) {
+			arrayName.splice(indexToRemove, 1);
+		}
+snippet custom-array-compare-remove "EVENTS: remove all items from first array based on second array"
+		let array1 = [1, 2, 3, 4, 5]
+		let array2 = [3, 4, 5, 6, 7]
+
+		array1 = array1.filter(item => !array2.includes(item))
+
+		console.log(array1) // Output: [1, 2]

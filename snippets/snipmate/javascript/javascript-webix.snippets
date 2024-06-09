@@ -1,0 +1,260 @@
+# =========================
+# Contents
+
+#  =WEBIX-AJAX
+#  =WEBIX-UI
+#  =WEBIX-MESSAGE
+#  =WEBIX-WAITBOX
+#  =WEBIX-METHOD
+#  =WEBIX-EVENTS
+#  =WEBIX-PROPERTIES
+#  =WEBIX-CUSTOM
+#
+# =========================
+
+# ==WEBIX-AJAX==
+snippet webix-ajax-post
+		webix.ajax().post('custom?custom_url=custom_employee/import', {
+			id: 1,
+		}, {
+			success: function (text, data) {
+				var res = data.json()
+				closeWaitBox()
+			},
+			error: function () {
+				closeWaitBox()
+				errorMessageBox("Error validating data")
+			}
+		})
+snippet webix-ajax-get
+		webix.ajax().get('custom?custom_url=custom_employee/import', {
+			id: 1,
+		}, {
+			success: function (text, data) {
+				var res = data.json()
+				closeWaitBox()
+			},
+			error: function () {
+				closeWaitBox()
+				errorMessageBox("Error validating data")
+			}
+		})
+snippet webix-ajax-post-success-only
+		webix.ajax().post('custom?custom_url=custom_employee/import', { id: 1, }, (text, data) => {})
+snippet webix-ajax-get-success-only
+		webix.ajax().get('custom?custom_url=custom_employee/import', { id: 1, }, (text, data) => {})
+# ==WEBIX-UI==
+snippet webix-ui-modal
+		webix.ui({
+			view: "window",
+			position: "center",
+			width: 300,
+			height: 200,
+			modal: true,
+			borderless: true,
+			title: "Inbox",
+			head: {
+				view: "toolbar",
+				height: 33,
+				cols: [
+					{
+						view: "label",
+						label: "Inbox"
+					},
+					{
+						view: "icon",
+						icon: "fas fa-times-circle",
+						click: function () {
+							this.getTopParentView().close();
+						}
+					}
+				]
+			},
+			body: {
+			},
+		}).show()
+snippet webix-ui-datatable
+		var datatable = webix.ui({
+				view:"datatable", 
+				columns:[
+						{
+								id: "Id",
+								header: "Id",
+								fillspace: true,
+								hidden: true
+						},
+						{
+								id: "EmployeeCode",
+								header: "EmployeeCode",
+								//editor: "text",
+								fillspace: true
+						},
+				],
+				data: employeeListArray
+		})
+snippet webix-ui-jsgrid
+		const jsgrid = webix.ui({
+			view: "jsgrid",
+			id: "accessControlListFormGrid",
+			hideAddButton: false,
+			hideRemoveButton: false,
+			hideImportButton: true,
+			hideExportButton: true,
+			autoLoad: true,
+			loadUrl: "access_control_list/details",
+			paramName: "access_control_list_details",
+			columns: [
+				{
+					id: "Id",
+					header: "Id",
+					fillspace: true,
+					hidden: true
+				},
+				{
+					id: "IPAddress",
+					header: "IP Address",
+					fillspace: true,
+					editor: "text"
+				}
+			],
+		})
+snippet webix-ui-checkbox
+		{
+			view:"checkbox", 
+			// id:"myId", //optional 
+			// name:"MyName", // optional 
+			labelRight:"Label", 
+			labelWidth: 1,
+			value:false
+		}
+# ==WEBIX-MESSAGE==
+snippet webix-message-confirm "message: confirm message box"
+		confirmMessageBox('Delete selected record(s)?', function () {
+			// if comfirm, do this
+		});
+snippet webix-message-info "message: confirm message box"
+		informMessageBox('You don't have access to this module')
+snippet webix-message-warning "message: confirm message box"
+		warningMessageBox(file.name + ' exceeds to ' + max + 'MB file limit.')
+snippet webix-message-error "message: error message box"
+		errorMessageBox('Error loading lookup data.')
+# ==WEBIX-WAITBOX==
+snippet webix-show-wait-box "message: show wait box"
+		showWaitBox('Loading lookup data...')
+snippet webix-close-wait-box "message: show wait box"
+		closeWaitBox('Loading lookup data...')
+# ==WEBIX-METHOD==
+snippet webix-get-item "METHOD: gets the object of the data item with the specified ID"
+		//id is numeric
+		this.getItem(id)
+snippet webix-get-item-node "METHOD: returns HTML element of the item"
+		this.getItemNode(123);
+snippet webix-get-node "METHOD: returns the main HTML container for the calling object"
+		$('elementId').getNode()
+snippet webix-set-value "METHOD: sets a new value for the component"
+		$$('elementId').setValue()
+snippet webix-get-value "METHOD: text returns the current value of the element"
+		$$('elementId').getValue()
+snippet webix-each-row 'METHOD: datatable, iterates over all rows in the table'
+		let employee_ids = []
+		const trainingDocumentGranteeGrid = $$('customTrainingDocumentGranteesGrid').getGrid()
+		trainingDocumentGranteeGrid.eachRow(function(row){ 
+			const currentRow = trainingDocumentGranteeGrid.getItem(row)
+			employee_ids.push(currentRow['EmployeeId'])
+		})
+snippet webix-define 'METHOD: view, redefines a single configuration property'
+		// redefines the width of the list
+		$$("mylist").define("width", 300);
+		$$("mylist").resize();
+		
+		// changes the label of the button
+		$$("button1").define("label", "New value");
+		$$("button1").refresh();
+		
+		// changes multiple properties at once
+		$$("text2").define({
+				value:"123",
+				label:"New label"
+		});
+		$$("text2").refresh();
+# ==WEBIX-EVENTS==
+snippet webix-on-change "EVENTS: jscombo"
+		$$("control").attachEvent("onChange", function(newValue, oldValue, config){
+				// code
+		});
+snippet webix-on-item-click "EVENTS: jscombo"
+		button.attachEvent("onItemClick", function(id, e){
+				// code
+		});
+snippet webix-is-new "EVENTS: base is form new"
+		base.isNew()
+snippet webix-is-view "EVENTS: base is form view"
+		base.isView()
+snippet webix-is-edit "EVENTS: base is form edit"
+		base.isEdit()
+snippet webix-is-save "EVENTS: base is form save"
+		base.isSave()
+# ==WEBIX-PROPERTIES==
+snippet padding "PROPERTIES: padding"
+    padding: 10,
+    padding:{
+      top:5, bottom:7, left:10, right:8
+    },
+snippet paddingX "PROPERTIES: paddingX"
+		paddingX: 10,
+snippet paddingY "PROPERTIES: paddingY"
+		paddingY: 10,
+snippet width "PROPERTIES: width"
+		width: 100,
+snippet minWidth "PROPERTIES: minWidth"
+		minWidth: 100,
+snippet maxWidth "PROPERTIES: maxWidth"
+		maxWidth: 100,
+snippet minHeight "PROPERTIES: minHeight"
+		minHeight: 100,
+snippet maxHeight "PROPERTIES: maxHeight"
+		maxHeight: 100,
+snippet header "PROPERTIES: header"
+		header: {
+			text: "Sample Header",
+			css: {
+				"color": "red !important",
+				"font-weight": "600 !important"
+			}
+		}
+# ==WEBIX-CUSTOM==
+snippet custom-webix-get-nested-element-ui
+		const tabview = $$("myTabView")
+		const tabbar = tabview.queryView({ view: "tabbar" }) // the tabbar ui is nested
+snippet custom-webix-formevents
+		define(function () {
+			function main(config) {
+			}
+
+			main.prototype.getEvents = function (base) {
+				const essManagerUserAccountsApproversCustomColumn = function () {
+					return {
+						id: "ThirdApproverExcessHourFiling",
+						header: "3rd Approver Excess Hour Filing",
+						fillspace: true,
+						template: "{common.checkbox()}",
+						css: {"text-align": "center"},
+						checkValue: true,
+						uncheckValue: false
+					}
+				}
+				const events = {
+					onCustomBeforeFormShow: function (form) {
+						if(isAccessible["UserAccounts.Custom"]){
+							const grid = $$("essManagerUserAccountsApproversTabGrid").getGrid()
+							const columns = grid.config.columns
+
+							columns.splice(columns.length, 0, essManagerUserAccountsApproversCustomColumn())
+							grid.refreshColumns()
+						}
+					}
+				}
+				return events
+			}
+			return main
+		})
