@@ -12,8 +12,16 @@
 ```
 ├── after
 │   └── ftplugin
+│       ├── blade.lua
+│       ├── css.lua
+│       ├── html.lua
 │       ├── javascript.lua
-│       └── ruby.lua
+│       ├── markdown.lua
+│       ├── pug.lua
+│       ├── pug.lua
+│       ├── ruby.lua
+│       ├── scss.lua
+│       └── sql.lua
 ├── lua
 │   ├── plugins
 │   │   ├── completion
@@ -34,14 +42,25 @@
 │   │   ├── project.lua
 │   │   ├── telescope-fzf.lua
 │   │   ├── telescope.lua
-│   │   ├── tmux.lua
-│   │   └── project.lua
+│   │   └── tmux.lua
 │   ├── abbreviations.lua
 │   ├── auto-commands.lua
 │   ├── lazy-plugins.lua
 │   ├── mappings.lua
 │   ├── neovide.lua
 │   └── settings.lua
+├── snippets
+│   └── snipmate
+│       ├── javascript
+│       │   ├── javascript-axios.snippets
+│       │   ├── javascript-express.snippets
+│       │   ├── javascript-moment.snippets
+│       │   ├── javascript-mssql.snippets
+│       │   ├── javascript-node.snippets
+│       │   ├── javascript-react.snippets
+│       │   └── javascript-webix.snippets
+│       ├── markdown.snippets
+│       └── ruby.snippets
 ├── .gitignore
 ├── README.md
 ├── init.lua
