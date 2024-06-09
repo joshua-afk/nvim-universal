@@ -42,11 +42,11 @@ return {
         },
         pickers = {
           find_files = {
-            theme = "dropdown"
+            -- theme = "dropdown" -- results is messed up in large codebase
           },
           buffers = {
             theme = "dropdown"
-          },
+          }
         },
       })
 
