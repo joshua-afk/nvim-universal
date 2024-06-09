@@ -18,10 +18,12 @@ return {
       -- Docs & completion for nvim lua API
       "folke/neodev.nvim",
 
+      -- LSP Diagnostic (like ale), Code actions, etc.
       "nvimtools/none-ls.nvim",
+      "nvimtools/none-ls-extras.nvim",
     },
     config = function()
-      local util = require 'lspconfig.util'
+      -- local util = require 'lspconfig.util'
       local lspconfig = require('lspconfig')
       local null_ls = require("null-ls")
 
@@ -42,19 +44,16 @@ return {
       -- Auto install lsp packages
       require('mason-lspconfig').setup({
         ensure_installed = {
-          "lua_ls",
           "eslint",
-          -- "eslint_d",
-          -- "rubocop",
+          "lua_ls"
         },
       })
 
       null_ls.setup({
         sources = {
           null_ls.builtins.formatting.stylua,
-          null_ls.builtins.completion.spell,
-          -- require("none-ls.diagnostics.eslint"), -- requires none-ls-extras.nvim
-        },
+          require("none-ls.diagnostics.eslint"),
+        }
       })
 
       -- Change lsp diagnostic icons
@@ -66,13 +65,6 @@ return {
       -- List of lsp servers to configure
       local servers = {
         lua_ls = {},
-        -- rubocop = {
-        --   settings ={
-        --     cmd = { "bundle", "exec", "rubocop", "--lsp" },
-        --     filetypes = { "ruby" },
-        --     root_dir = util.root_pattern('Gemfile', '.git'),
-        --   }
-        -- },
       }
 
       -- Default handlers for LSP
