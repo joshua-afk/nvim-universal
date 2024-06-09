@@ -1,6 +1,7 @@
 ## File Architecture
 ---
 
+```
 ├── after
 │   └── ftplugin
 │       ├── javascript.lua
@@ -37,3 +38,4 @@
 ├── README.md
 ├── init.lua
 └── lazy-lock.json
+```
