@@ -4,6 +4,10 @@ local options = { noremap = true }
 keymap.set("n", "<Space>", "<Nop>", { silent = true, remap = false })
 g.mapleader = " "
 
+-- CTRL + Backspace to delete word in nvim
+-- NOTE: Disable Ctrl + Backspace mapping in alacritty
+api.nvim_set_keymap('i', "<C-BS>", "<C-W>", options)
+
 -- Quickly open vimrc
 api.nvim_set_keymap('n', '<leader>vrc', ':vsplit $MYVIMRC <cr>', options)
 
