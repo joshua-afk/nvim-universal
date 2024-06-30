@@ -31,6 +31,14 @@ return {
         defaults = {
           color_devicons = true,
           file_ignore_patterns = ignore_these,
+          -- CTRL + Backspace to delete word when using telescope
+          mappings = {
+            i = {
+              ["<C-BS>"] = function()
+                vim.api.nvim_input "<C-W>"
+              end,
+            },
+          }
         },
         extensions = {
           fzf = {
