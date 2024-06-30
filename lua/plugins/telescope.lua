@@ -12,18 +12,19 @@ return {
 
       local ignore_these = {
         '.git/.*',
-        '.yarn',
         '.neuron',
-        'node_modules',
+        '.yarn',
+        'build',
+        'dist',
+        'eslintReport.json',
         'fonts',
         'icons',
         'images',
-        'dist',
-        'build',
-        'yarn.lock',
+        'node_modules',
         'package-lock.json',
+        'tags',
         'vendor',
-        'tags'
+        'yarn.lock'
       }
 
       telescope.setup({
@@ -42,6 +43,7 @@ return {
         },
         pickers = {
           find_files = {
+            previewer = false
             -- theme = "dropdown" -- results is messed up in large codebase
           },
           buffers = {
