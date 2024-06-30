@@ -97,3 +97,6 @@ api.nvim_set_keymap('n', '<leader>n', ':NvimTreeFindFile <cr>', { noremap = true
 -- Lazygit
 api.nvim_set_keymap('n', '<leader>lg', ':LazyGit <cr>', { noremap = true })
 api.nvim_set_keymap('n', '<leader>lgc', ':LazyGitFilterCurrentFile <cr>', { noremap = true })
+
+-- Quick switch to current file scss
+api.nvim_set_keymap('n', '<leader>st', ':e %:r.scss <cr>', { noremap = true })
