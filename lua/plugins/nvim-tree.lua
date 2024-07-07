@@ -9,10 +9,10 @@ return {
     },
     config = function()
       require("nvim-tree").setup({
-        update_cwd = true,
+        update_cwd = false,
         update_focused_file = {
           enable = true,
-          update_root = true
+          update_root = false
         },
         renderer = {
           icons = {
@@ -21,6 +21,17 @@ return {
               folder = true,
               folder_arrow = true,
               git = false,
+            }
+          },
+          indent_markers = {
+            enable = true,
+            inline_arrows = true,
+            icons = {
+              corner = "└",
+              edge = "│",
+              item = "│",
+              bottom = "─",
+              none = " ",
             }
           }
         },
