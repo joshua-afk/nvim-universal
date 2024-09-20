@@ -18,7 +18,11 @@ local plugins = {
   { import = "plugins.lsp" },
   { import = "plugins.obsidian" },
 
-  'nvim-pack/nvim-spectre',
+  -- Colorschemes
+  { import = "plugins.colorschemes.catppuccin" },
+  -- { import = "plugins.colorschemes.deepwhite" },
+  -- { import = "plugins.colorschemes.papercolor" },
+  -- { import = "plugins.colorschemes.tokyo-night" },
 
   -- Core
   'chrisbra/vim-diff-enhanced',
@@ -46,7 +50,6 @@ local plugins = {
   'vim-python/python-syntax',
   'tbastos/vim-lua',
   'ap/vim-css-color',
-  { "folke/neodev.nvim", opts = {} },
 
   -- Git
   'tpope/vim-fugitive',
@@ -65,9 +68,11 @@ local plugins = {
 }
 
 local opts = {
-  install = {
-    colorscheme = { "catppuccin" }
-  },
+  -- install = {
+  --   -- colorscheme = { "catppuccin" }
+  --   -- colorscheme = { "tokyonight" }
+  --   -- colorscheme = { "deepwhite" }
+  -- },
   change_detection = {
     enabled = false,
     notify = false,
