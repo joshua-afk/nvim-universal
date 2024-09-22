@@ -38,6 +38,9 @@ snippet if "CONDITIONS: if statement"
 		if ($1) {
 			$0
 		}
+
+		{true && (<component>)}
+		{true ? (<component />) : (<component />)}
 snippet ifelse "CONDITIONS: ifelse statement"
 		if ($1) {
 			$2
