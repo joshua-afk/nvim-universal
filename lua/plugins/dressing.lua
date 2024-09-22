@@ -62,8 +62,8 @@ return {
           },
 
           override = function(conf)
-            -- This is the config that will be passed to nvim_open_win.
-            -- Change values here to customize the layout
+            conf.col = -1
+            conf.row = 0
             return conf
           end,
 
