@@ -1,4 +1,4 @@
--- Global variables
+-- VIM global variables
 api = vim.api
 fn = vim.fn
 g = vim.g
@@ -6,6 +6,9 @@ keymap = vim.keymap
 loop = vim.loop
 o = vim.o
 opt = vim.opt
+
+-- Self assigned global variables
+g.left_sidebar_width = 45
 
 -- Disable providers
 g.loaded_perl_provider = 0

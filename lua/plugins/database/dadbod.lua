@@ -12,7 +12,7 @@ return {
       vim.cmd [[
         let g:db_ui_default_query = 'select * from "{table}" limit 10'
 
-        let g:db_ui_winwidth = 45
+        let g:db_ui_winwidth = left_sidebar_width
       ]]
     end
   }

@@ -60,7 +60,7 @@ return {
           update_root = false
         },
         view = {
-          width = 45
+          width = g.left_sidebar_width
         }
       })
     end
