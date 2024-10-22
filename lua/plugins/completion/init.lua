@@ -10,6 +10,9 @@ return {
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
       'saadparwaiz1/cmp_luasnip',
+
+      -- Display parameters of  function under the cursor
+      'hrsh7th/cmp-nvim-lsp-signature-help'
     },
     config = function()
       local cmp = require("cmp")
@@ -77,6 +80,13 @@ return {
             end
           end),
         },
+        opts = function(_, opts)
+          opts.sources = opts.sources or {}
+          table.insert(opts.sources, {
+            name = "lazydev",
+            group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+          })
+        end,
         sources = cmp.config.sources {
           { name = 'nvim_lsp' },
           { name = 'buffer', max_item_count = 5 },
@@ -147,7 +157,8 @@ return {
           Value = "󰎠",
           Enum = "",
           Keyword = "󰌋",
-          Snippet = "",
+          -- Snippet = " ",
+          Snippet = "",
           Color = "󰏘",
           File = "󰈙",
           Reference = "󰈇",
