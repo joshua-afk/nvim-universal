@@ -15,6 +15,9 @@ opt.rtp:prepend(lazypath)
 local plugins = {
   { import = "plugins" },
   { import = "plugins.completion" },
+  { import = "plugins.core" },
+  { import = "plugins.database" },
+  { import = "plugins.debugging" },
   { import = "plugins.lsp" },
   { import = "plugins.obsidian" },
 
@@ -64,7 +67,8 @@ local plugins = {
   -- 'saadparwaiz1/cmp_luasnip',
 
   -- Etc
-  'tpope/vim-eunuch',
+  -- Vim sugar for the UNIX shell commands that need it the most.
+  -- 'tpope/vim-eunuch',
 }
 
 local opts = {
