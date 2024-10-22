@@ -8,16 +8,16 @@
 ---
 
 ## File Architecture
-
+**NOT UPDATED**
 ```
 ├── after
 │   └── ftplugin
 │       ├── blade.lua
 │       ├── css.lua
+│       ├── gitcommit.lua
 │       ├── html.lua
 │       ├── javascript.lua
 │       ├── markdown.lua
-│       ├── pug.lua
 │       ├── pug.lua
 │       ├── ruby.lua
 │       ├── scss.lua
