@@ -31,6 +31,7 @@ o.clipboard='unnamedplus'
 o.fixendofline=false
 o.completeopt='menu,menuone,noselect'
 o.signcolumn='yes'
+o.conceallevel=2
 
 -- Backup file
 o.swapfile=false
@@ -40,10 +41,10 @@ o.undofile=true
 opt.undodir=vim.fn.expand("~/.config/nvim-undo")
 
 -- TAB
-o.tabstop=2                      		-- Width of tab character
-o.softtabstop=2                       	-- Fine tunes the amount of white space to be added
-o.shiftwidth=2                        	-- Number of spaces to use for autoindenting
-o.expandtab=true                        -- Use spaces instead of tabs
+o.tabstop=2       -- Width of tab character
+o.softtabstop=2   -- Fine tunes the amount of white space to be added
+o.shiftwidth=2    -- Number of spaces to use for autoindenting
+o.expandtab=true  -- Use spaces instead of tabs
 
 -- Fold
 o.foldmethod='manual'
