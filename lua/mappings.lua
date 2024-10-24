@@ -145,6 +145,10 @@ keymap.set('n', '<leader>k', function()
   vim.diagnostic.goto_prev()
 end, options)
 
+keymap.set('n', '<leader>o', function()
+  vim.diagnostic.open_float()
+end, options)
+
 -- LSP things
 api.nvim_set_keymap('n', '<c-]', '<cmd>lua vim.lsp.buf.definition()<cr>', options)
 api.nvim_set_keymap('n', '<c-t>', '<cmd>vsplit | lua vim.lsp.buf.definition()<cr>', options)
