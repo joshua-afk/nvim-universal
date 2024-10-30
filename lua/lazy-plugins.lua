@@ -38,7 +38,6 @@ local plugins = {
   { 'mg979/vim-visual-multi', branch = 'master' },
   'MattesGroeger/vim-bookmarks',
   'psliwka/vim-smoothie',
-  'unblevable/quick-scope',
 
   -- Linting
   -- 'mfussenegger/nvim-lint',
