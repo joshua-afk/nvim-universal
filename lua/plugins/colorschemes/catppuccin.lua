@@ -170,6 +170,8 @@ return {
               CursorLineNr = { fg = colors.text },
               FloatBorder = { bg = colors.base, fg = colors.surface0 },
               GitSignsChange = { fg = colors.peach },
+              GitSignsAdd= { fg = colors.green },
+              GitSignsDelete = { fg = colors.red },
               LineNr = { fg = colors.overlay0 },
               LspInfoBorder = { link = "FloatBorder" },
               NvimTreeWindowPicker = { bg = colors.crust },
@@ -209,6 +211,8 @@ return {
               YankHighlight = { bg = colors.surface2 },
               FidgetTask = { fg = colors.subtext2 },
               FidgetTitle = { fg = colors.peach },
+              EyelinerPrimary = { fg = colors.mauve, style = { "bold", "underline" } },
+              EyelinerSecondary = { fg = colors.peach, style = { "bold", "underline" } },
 
               IblIndent = { fg = colors.surface0 },
               IblScope = { fg = colors.overlay0 },
