@@ -31,7 +31,6 @@ o.clipboard='unnamedplus'
 o.fixendofline=false
 o.completeopt='menu,menuone,noselect'
 o.signcolumn='yes'
-o.conceallevel=2
 
 -- Backup file
 o.swapfile=false
