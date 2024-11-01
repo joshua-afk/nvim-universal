@@ -41,8 +41,24 @@ end
 
 -- Paste from system clipboard
 if fn.has('macunix') then
-  api.nvim_set_keymap('n', '<leader>p', '<cmd>r !pbpaste <cr>', options)
-  api.nvim_set_keymap('v', '<leader>p', 'd<cmd>r !pbpaste <cr>', options)
+  keymap.set('n', '<leader>p', function()
+    cmd('r !pbpaste')
+  end, options)
+
+  keymap.set('v', '<leader>p', function()
+    -- Send `d` keystroke
+    api.nvim_feedkeys("d", "n", true)
+
+    -- 0ms command execution delay
+    vim.defer_fn(function()
+      cmd('r !pbpaste')
+    end, 0)
+  end, options)
+
+  -- keymap.set('v', 'p', {"d", "<cmd>", "r !pbpaste", "<cr>"}, options)
+
+  -- api.nvim_set_keymap('n', 'p', '<cmd>r !pbpaste <cr>', options)
+  -- api.nvim_set_keymap('v', 'p', 'd<cmd>r !pbpaste <cr>', options)
 else
   api.nvim_set_keymap('n', '<leader>p', '"+p', options)
   api.nvim_set_keymap('n', '<leader>P', '"+P', options)
@@ -103,7 +119,6 @@ api.nvim_set_keymap('n', '<leader>fdf', ':FileInDirectory <cr>', options)
 api.nvim_set_keymap('n', '<leader>fdg', ':GrepInDirectory <cr>', options)
 
 -- nvim-tree
---
 api.nvim_set_keymap('n', '<leader>e', '<cmd>DBUIClose<cr><cmd>NvimTreeToggle<cr>', options)
 api.nvim_set_keymap('n', '<leader>r', ':NvimTreeRefresh <cr>', options)
 api.nvim_set_keymap('n', '<leader>n', ':NvimTreeFindFile <cr>', options)
@@ -128,7 +143,7 @@ api.nvim_set_keymap('n', '<leader>go', ':GitBlameOpenCommitURL <cr>', options)
 api.nvim_set_keymap('n', '<leader>u', ':lua require("undotree").toggle() <cr>', options)
 
 -- ToggleTerm
-api.nvim_set_keymap('n', '<leader>t', ':ToggleTerm<cr>', options)
+-- api.nvim_set_keymap('n', '<leader>t', ':ToggleTerm<cr>', options)
 
 -- Debugging
 api.nvim_set_keymap('n', '<leader>cl', '<cmd>lua require("chainsaw").variableLog()<cr>', options)
@@ -141,16 +156,30 @@ keymap.set('n', '<leader>j', function()
   vim.diagnostic.goto_next()
 end, options)
 
+-- keymap.set('n', '<leader>k', function()
+--   vim.diagnostic.goto_prev()
+-- end, options)
+
 keymap.set('n', '<leader>k', function()
-  vim.diagnostic.goto_prev()
+  vim.diagnostic.open_float()
 end, options)
 
 -- LSP things
 api.nvim_set_keymap('n', '<c-]', '<cmd>lua vim.lsp.buf.definition()<cr>', options)
-api.nvim_set_keymap('n', '<c-t>', '<cmd>vsplit | lua vim.lsp.buf.definition()<cr>', options)
 api.nvim_set_keymap('n', '<leader>ft', '<cmd>lua vim.lsp.buf.format()<cr>', options)
 api.nvim_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', options)
 api.nvim_set_keymap('i', '<c-s>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', options)
+keymap.set('n', '<c-t>', function()
+  local filetype = vim.bo.filetype
+
+  cmd('vsplit')
+  if filetype == 'markdown' then
+    cmd('ObsidianFollowLink')
+  else
+    -- Use api.nvim_feedkeys to simulate pressing <c-]>
+    api.nvim_feedkeys(api.nvim_replace_termcodes("<c-]>", true, true, true), 'n', true)
+  end
+end, options)
 
 -- LSP TSX
 api.nvim_set_keymap('n', '<leader>tsi', '<cmd>TSToolsAddMissingImports<cr>', options)
