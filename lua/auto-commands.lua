@@ -43,21 +43,6 @@ api.nvim_create_autocmd('BufWinLeave', {
   command = 'silent! loadview'
 })
 
--- Quick Scope
-local qs_colors = api.nvim_create_augroup('qs_colors', {clear = true})
-
-api.nvim_create_autocmd('ColorScheme', {
-  pattern = '*',
-  group = qs_colors,
-  command = "highlight QuickScopePrimary guifg='#e28b8e' gui=underline ctermfg=155 cterm=underline"
-})
-
-api.nvim_create_autocmd('ColorScheme', {
-  pattern = '*',
-  group = qs_colors,
-  command = "highlight QuickScopeSecondary guifg='#ebddaa' gui=underline ctermfg=81 cterm=underline"
-})
-
 -- Highlight on yank (See `:help vim.highlight.on_yank()`)
 local highlight_group = api.nvim_create_augroup('YankHighlight', { clear = true })
 
