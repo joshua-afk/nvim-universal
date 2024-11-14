@@ -1,5 +1,6 @@
 -- VIM global variables
 api = vim.api
+cmd = vim.cmd
 fn = vim.fn
 g = vim.g
 keymap = vim.keymap

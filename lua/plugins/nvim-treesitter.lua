@@ -11,6 +11,7 @@ return {
       local config = require("nvim-treesitter.configs")
 
       local languages = {
+        "bash",
         "comment",
         "css",
         "html",
@@ -21,11 +22,12 @@ return {
         "php",
         "pug",
         "query",
+        "regex",
         "ruby",
         "sql",
         "vim",
         "vimdoc",
-        "xml"
+        "xml",
       }
 
       config.setup({

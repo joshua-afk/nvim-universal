@@ -69,8 +69,10 @@ return {
         '*.pptx',
       }
 
+      -- Ensure that gutentags will only work for 'Ruby on Rails' projects
       vim.g.gutentags_add_default_project_roots = false
-      vim.g.gutentags_project_root = { 'package.json', '.git' }
+      vim.g.gutentags_project_root = { 'Gemfile', 'Gemfile.lock', 'docker-compose.yml' }
+
       vim.g.gutentags_cache_dir = vim.fn.stdpath("data") .. '/ctags'
       vim.g.gutentags_generate_on_new = true
       vim.g.gutentags_generate_on_missing = true

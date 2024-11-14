@@ -1,3 +1,4 @@
+-- TODO: Obsidian nvim and render-markdown nvim might be conflicting each other.
 return {
   {
     'epwalsh/obsidian.nvim',

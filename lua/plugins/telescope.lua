@@ -34,17 +34,29 @@ return {
 
       telescope.setup({
         defaults = {
+          vimgrep_arguments = {
+            "rg",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+            "--hidden",
+            "--trim",
+            "--multiline"
+          },
           color_devicons = true,
           file_ignore_patterns = ignore_these,
           -- CTRL + Backspace to delete word when using telescope
           mappings = {
             i = {
-              ["<C-BS>"] = function()
+              ["<c-BS>"] = function()
                 vim.api.nvim_input "<C-W>"
               end,
             },
             n = {
-              ['<C-p>'] = require('telescope.actions.layout').toggle_preview
+              ['<c-p>'] = require('telescope.actions.layout').toggle_preview
             }
           }
         },
@@ -55,13 +67,12 @@ return {
             override_file_sorter = true,     -- override the file sorter
             case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
             -- the default case_mode is "smart_case"
-          }
+          },
         },
         pickers = {
           find_files = {
-            -- find_command = { 'rg', '--files',  '-g', '--hidden', '!.git', '!.github' },
-            --lua require("telescope.builtin").find_files({ 'rg', '--files',  '-g', '--hidden', '!.git', '!.github' })
-            previewer = false
+            previewer = false,
+            hidden = true,
             -- theme = "dropdown" -- results is messed up in large codebase
           },
           buffers = {
@@ -72,8 +83,8 @@ return {
 
       -- Custom highlights
       local colors = require("catppuccin.palettes").get_palette()
-      api.nvim_set_hl(0, "TelescopeBorder", { fg = colors.mauve })
-      api.nvim_set_hl(0, "TelescopeTitle", { fg = colors.lavender })
+      -- api.nvim_set_hl(0, "TelescopeBorder", { fg = colors.mauve })
+      -- api.nvim_set_hl(0, "TelescopeTitle", { fg = colors.lavender })
 
       -- Extensions
       telescope.load_extension('fzf')

@@ -139,7 +139,7 @@ return {
         },
         update_cwd = false,
         update_focused_file = {
-          enable = true,
+          enable = false,
           update_root = false
         },
         view = {

@@ -36,8 +36,8 @@ return {
       --     -- require("none-ls.diagnostics.eslint"),
       --     require("none-ls.code_actions.eslint"),
       --
-      --     -- ruby
-      --     -- null_ls.builtins.diagnostics.rubocop,
+          -- ruby
+          -- null_ls.builtins.diagnostics.rubocop,
         }
       })
       -- Change lsp diagnostic icons
@@ -102,7 +102,7 @@ return {
               },
               diagnostics = {
                 -- Get the language server to recognize the `vim` global
-                globals = { "vim", "g" },
+                globals = { "api", "cmd",  "fn", "g", "keymap", "loop", "o", "opt" },
               },
               workspace = {
                 -- Make the server aware of Neovim runtime files and plugins
@@ -129,6 +129,12 @@ return {
         --     },
         --   },
         --   single_file_support = false,
+        -- },
+        -- rubocop = {
+        --   -- cmd = { "bundle", "exec", "rubocop", "--lsp" },
+        --   -- cmd = { "bundle", "exec", "rubocop", "--lsp" },
+        --   filetypes = { "ruby" },
+        --   root_dir = util.root_pattern("Gemfile", ".git"),
         -- },
         stylelint_lsp = {
           filetypes = { "css", "less", "scss", "sass" },
@@ -171,6 +177,7 @@ return {
       for name, config in pairs(servers) do
         lspconfig[name].setup({
           capabilities = default_capabilities,
+          cmd = config.cmd,
           filetypes = config.filetypes,
           handlers = vim.tbl_deep_extend("force", {}, default_handlers, config.handlers or {}),
           on_attach = on_attach,

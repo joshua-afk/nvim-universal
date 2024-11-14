@@ -29,11 +29,11 @@ return {
 
         -- Linter
         -- "eslint_d",
-        "stylelint",
+        -- "stylelint",
 
         -- Formatter
-        "prettierd",
-        "stylua",
+        -- "prettierd",
+        -- "stylua",
       },
     })
   end

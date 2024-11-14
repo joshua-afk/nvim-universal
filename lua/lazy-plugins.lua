@@ -17,8 +17,11 @@ local plugins = {
   { import = "plugins.completion" },
   { import = "plugins.core" },
   { import = "plugins.database" },
+  { import = "plugins.diagnostics" },
   { import = "plugins.debugging" },
+  { import = "plugins.linters" },
   { import = "plugins.lsp" },
+  { import = "plugins.navigation" },
   { import = "plugins.obsidian" },
 
   -- Colorschemes
@@ -35,7 +38,7 @@ local plugins = {
   'jiangmiao/auto-pairs',
 
   -- Navigation
-  { 'mg979/vim-visual-multi', branch = 'master' },
+  -- { 'mg979/vim-visual-multi', branch = 'master' },
   'MattesGroeger/vim-bookmarks',
   'psliwka/vim-smoothie',
 

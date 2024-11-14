@@ -121,7 +121,7 @@ api.nvim_set_keymap('n', '<leader>fdg', ':GrepInDirectory <cr>', options)
 -- nvim-tree
 api.nvim_set_keymap('n', '<leader>e', '<cmd>DBUIClose<cr><cmd>NvimTreeToggle<cr>', options)
 api.nvim_set_keymap('n', '<leader>r', ':NvimTreeRefresh <cr>', options)
-api.nvim_set_keymap('n', '<leader>n', ':NvimTreeFindFile <cr>', options)
+api.nvim_set_keymap('n', '<leader>i', ':NvimTreeFindFile <cr>', options)
 
 -- Lazygit
 api.nvim_set_keymap('n', '<leader>lg', ':LazyGit <cr>', options)
