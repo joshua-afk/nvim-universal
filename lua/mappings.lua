@@ -134,14 +134,16 @@ api.nvim_set_keymap('n', '<leader>js', ':e %:r.js <cr>', options)
 -- Dadbod UI
 api.nvim_set_keymap('n', '<leader>d', '<cmd>NvimTreeClose<cr><cmd>DBUIToggle<cr>', options)
 
-
 -- Git BLame
 api.nvim_set_keymap('n', '<leader>gb', ':GitBlameToggle <cr>', options)
 api.nvim_set_keymap('n', '<leader>go', ':GitBlameOpenCommitURL <cr>', options)
 
+-- Zen
+api.nvim_set_keymap('n', '<leader>z', '<cmd>ZenMode<cr>', options)
+
+
 -- Undotree
 api.nvim_set_keymap('n', '<leader>u', ':lua require("undotree").toggle() <cr>', options)
-
 -- ToggleTerm
 -- api.nvim_set_keymap('n', '<leader>t', ':ToggleTerm<cr>', options)
 
