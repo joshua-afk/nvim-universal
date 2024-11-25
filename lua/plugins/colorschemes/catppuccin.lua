@@ -423,14 +423,14 @@ return {
               ["@lsp.type.variable"] = { link = "TSVariable" },
             }
           end,
-          latte = function(colors)
-            return {
-              IblIndent = { fg = colors.mantle },
-              IblScope = { fg = colors.surface1 },
-
-              LineNr = { fg = colors.surface1 },
-            }
-          end,
+          -- latte = function(colors)
+          --   return {
+          --     IblIndent = { fg = colors.mantle },
+          --     IblScope = { fg = colors.surface1 },
+          --
+          --     LineNr = { fg = colors.surface1 },
+          --   }
+          -- end,
         },
 
         -- color_overrides = {

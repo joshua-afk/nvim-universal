@@ -21,7 +21,7 @@ return {
 
       --## LuaSnip
       local snipmate_snippets_path = vim.fn.stdpath('config')..'/snippets/snipmate'
-      local catppuccin_color = require("catppuccin.palettes").get_palette()
+      -- local catppuccin_color = require("catppuccin.palettes").get_palette()
 
       -- Extend Snippets 
       luasnip.filetype_extend("javascript", {
@@ -136,7 +136,7 @@ return {
       api.nvim_set_hl(0, "CmpItemKindInterface", { fg = "#D8EEEB", bg = "#58B5A8" })
       api.nvim_set_hl(0, "CmpItemKindColor", { fg = "#D8EEEB", bg = "#58B5A8" })
       api.nvim_set_hl(0, "CmpItemKindTypeParameter", { fg = "#D8EEEB", bg = "#58B5A8" })
-      api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = catppuccin_color.base, bg = "#6CC644" })
+      -- api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = catppuccin_color.base, bg = "#6CC644" })
 
       -- LspKind config (extend Popup Menu layout customization)
       lspkind.init({

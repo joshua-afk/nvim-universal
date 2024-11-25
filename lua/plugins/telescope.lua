@@ -82,7 +82,7 @@ return {
       })
 
       -- Custom highlights
-      local colors = require("catppuccin.palettes").get_palette()
+      -- local colors = require("catppuccin.palettes").get_palette()
       -- api.nvim_set_hl(0, "TelescopeBorder", { fg = colors.mauve })
       -- api.nvim_set_hl(0, "TelescopeTitle", { fg = colors.lavender })
 
