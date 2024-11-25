@@ -19,6 +19,9 @@ return {
     },
     config = function()
       require('obsidian').setup({
+        ui = {
+          enable = false
+        },
         workspaces = {
           {
             name = "personal",
