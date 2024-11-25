@@ -25,10 +25,12 @@ local plugins = {
   { import = "plugins.obsidian" },
 
   -- Colorschemes
-  { import = "plugins.colorschemes.catppuccin" },
+  -- { import = "plugins.colorschemes.catppuccin" },
   -- { import = "plugins.colorschemes.deepwhite" },
   -- { import = "plugins.colorschemes.papercolor" },
   -- { import = "plugins.colorschemes.tokyo-night" },
+  -- { import = "plugins.colorschemes.gruvbox-material" },
+  { import = "plugins.colorschemes.nightfox" },
 
   -- Core
   'chrisbra/vim-diff-enhanced',
@@ -43,6 +45,7 @@ local plugins = {
   'psliwka/vim-smoothie',
 
   -- Linting
+  'sheerun/vim-polyglot',
   -- 'mfussenegger/nvim-lint',
   'digitaltoad/vim-pug',
   'jwalton512/vim-blade',
