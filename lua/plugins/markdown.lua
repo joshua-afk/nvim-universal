@@ -1,5 +1,6 @@
 -- TODO: Obsidian nvim and this plugin might be conflicting each other.
 return {
+  -- 'render-markdown.nvim'
   {
     'MeanderingProgrammer/render-markdown.nvim',
     dependencies = {
@@ -47,5 +48,16 @@ return {
         breakindent = { default = vim.api.nvim_get_option_value('breakindent', {}), rendered = true },
         breakindentopt = { default = vim.api.nvim_get_option_value('breakindentopt', {}), rendered = '' },}
     },
+  },
+  -- 'toppair/peek.nvim'
+  {
+    "toppair/peek.nvim",
+    event = { "VeryLazy" },
+    build = "deno task --quiet build:fast",
+    config = function()
+        require("peek").setup()
+        vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
+        vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
+    end,
   }
 }

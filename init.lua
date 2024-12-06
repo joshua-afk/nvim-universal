@@ -9,7 +9,7 @@ o = vim.o
 opt = vim.opt
 
 -- Self assigned global variables
-g.left_sidebar_width = 45
+g.left_sidebar_width = 55
 
 -- Disable providers
 g.loaded_perl_provider = 0

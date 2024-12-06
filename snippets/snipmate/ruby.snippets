@@ -65,9 +65,9 @@ snippet uniq "ARRAY: remove duplicate (values/elements/keys) of array"
 		a.uniq   # => ["a", "b", "c"]
 # ==CUSTOM==
 snippet dummy "CUSTOM: output text with style"
-		puts "=========================================="
-		puts $1
-		puts "=========================================="
+		puts '=========================================='
+		pp $1
+		puts '=========================================='
 snippet get-date-time "CUSTOM: get current date from database"
 		date_time = Db.find_by_sql('SELECT GETDATE() AS Date')[0].Date
 snippet get-time-now "CUSTOM: get current time from database"

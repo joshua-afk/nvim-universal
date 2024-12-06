@@ -22,111 +22,112 @@ return {
   --   local Align = { provider = "%=", hl = { bg = colors.crust } }
   --   local Space = { provider = " " }
   --
-  --   local ViMode = {
-  --     {
-  --       init = function(self)
-  --         self.mode = vim.api.nvim_get_mode().mode
-  --         if not self.once then
-  --           vim.api.nvim_create_autocmd("ModeChanged", {
-  --             pattern = "*:*o",
-  --             command = "redrawstatus",
-  --           })
-  --           self.once = true
-  --         end
-  --       end,
-  --       static = {
-  --         MODE_NAMES = {
-  --           ["!"] = "SHELL",
-  --           ["R"] = "REPLACE",
-  --           ["Rc"] = "REPLACE",
-  --           ["Rv"] = "V-REPLACE",
-  --           ["Rvc"] = "V-REPLACE",
-  --           ["Rvx"] = "V-REPLACE",
-  --           ["Rx"] = "REPLACE",
-  --           ["S"] = "S-LINE",
-  --           ["V"] = "V-LINE",
-  --           ["Vs"] = "V-LINE",
-  --           ["\19"] = "S-BLOCK",
-  --           ["\22"] = "V-BLOCK",
-  --           ["\22s"] = "V-BLOCK",
-  --           ["c"] = "COMMAND",
-  --           ["ce"] = "EX",
-  --           ["cv"] = "EX",
-  --           ["i"] = "INSERT",
-  --           ["ic"] = "INSERT",
-  --           ["ix"] = "INSERT",
-  --           ["n"] = "NORMAL",
-  --           ["niI"] = "NORMAL",
-  --           ["niR"] = "NORMAL",
-  --           ["niV"] = "NORMAL",
-  --           ["no"] = "O-PENDING",
-  --           ["noV"] = "O-PENDING",
-  --           ["no\22"] = "O-PENDING",
-  --           ["nov"] = "O-PENDING",
-  --           ["nt"] = "NORMAL",
-  --           ["ntT"] = "NORMAL",
-  --           ["r"] = "REPLACE",
-  --           ["r?"] = "CONFIRM",
-  --           ["rm"] = "MORE",
-  --           ["s"] = "SELECT",
-  --           ["t"] = "TERMINAL",
-  --           ["v"] = "VISUAL",
-  --           ["vs"] = "VISUAL",
-  --         },
-  --         MODE_COLORS = {
-  --           ["␓"] = colors.yellow,
-  --           ["␖"] = colors.yellow,
-  --           ["␖s"] = colors.yellow,
-  --           ["!"] = colors.maroon,
-  --           ["R"] = colors.flamingo,
-  --           ["Rc"] = colors.flamingo,
-  --           ["Rv"] = colors.rosewater,
-  --           ["Rx"] = colors.flamingo,
-  --           ["S"] = colors.teal,
-  --           ["V"] = colors.lavender,
-  --           ["Vs"] = colors.lavender,
-  --           ["c"] = colors.peach,
-  --           ["ce"] = colors.peach,
-  --           ["cv"] = colors.peach,
-  --           ["i"] = colors.green,
-  --           ["ic"] = colors.green,
-  --           ["ix"] = colors.green,
-  --           ["n"] = colors.blue,
-  --           ["niI"] = colors.blue,
-  --           ["niR"] = colors.blue,
-  --           ["niV"] = colors.blue,
-  --           ["no␖"] = colors.pink,
-  --           ["no"] = colors.pink,
-  --           ["noV"] = colors.pink,
-  --           ["nov"] = colors.pink,
-  --           ["nt"] = colors.red,
-  --           ["null"] = colors.pink,
-  --           ["r"] = colors.teal,
-  --           ["r?"] = colors.maroon,
-  --           ["rm"] = colors.sky,
-  --           ["s"] = colors.teal,
-  --           ["t"] = colors.red,
-  --           ["v"] = colors.mauve,
-  --           ["vs"] = colors.mauve,
-  --         },
-  --       },
-  --       provider = function(self)
-  --         local mode = self.mode:sub(1, 1)
-  --         return string.format("▌ %s ", self.MODE_NAMES[mode])
-  --       end,
-  --       hl = function(self)
-  --         local mode = self.mode:sub(1, 1)
-  --         return { fg = self.MODE_COLORS[mode], bg = colors.mantle, bold = true }
-  --       end,
-  --       update = {
-  --         "ModeChanged",
-  --       },
-  --     },
-  --     {
-  --       provider = "",
-  --       hl = { bg = colors.crust, fg = colors.mantle },
-  --     },
-  --   }
+  --   -- local ViMode = {
+  --   --   {
+  --   --     init = function(self)
+  --   --       self.mode = vim.api.nvim_get_mode().mode
+  --   --       if not self.once then
+  --   --         vim.api.nvim_create_autocmd("ModeChanged", {
+  --   --           pattern = "*:*o",
+  --   --           command = "redrawstatus",
+  --   --         })
+  --   --         self.once = true
+  --   --       end
+  --   --     end,
+  --   --     static = {
+  --   --       MODE_NAMES = {
+  --   --         ["!"] = "SHELL",
+  --   --         ["R"] = "REPLACE",
+  --   --         ["Rc"] = "REPLACE",
+  --   --         ["Rv"] = "V-REPLACE",
+  --   --         ["Rvc"] = "V-REPLACE",
+  --   --         ["Rvx"] = "V-REPLACE",
+  --   --         ["Rx"] = "REPLACE",
+  --   --         ["S"] = "S-LINE",
+  --   --         ["V"] = "V-LINE",
+  --   --         ["Vs"] = "V-LINE",
+  --   --         ["\19"] = "S-BLOCK",
+  --   --         ["\22"] = "V-BLOCK",
+  --   --         ["\22s"] = "V-BLOCK",
+  --   --         ["c"] = "COMMAND",
+  --   --         ["ce"] = "EX",
+  --   --         ["cv"] = "EX",
+  --   --         ["i"] = "INSERT",
+  --   --         ["ic"] = "INSERT",
+  --   --         ["ix"] = "INSERT",
+  --   --         ["n"] = "NORMAL",
+  --   --         ["niI"] = "NORMAL",
+  --   --         ["niR"] = "NORMAL",
+  --   --         ["niV"] = "NORMAL",
+  --   --         ["no"] = "O-PENDING",
+  --   --         ["noV"] = "O-PENDING",
+  --   --         ["no\22"] = "O-PENDING",
+  --   --         ["nov"] = "O-PENDING",
+  --   --         ["nt"] = "NORMAL",
+  --   --         ["ntT"] = "NORMAL",
+  --   --         ["r"] = "REPLACE",
+  --   --         ["r?"] = "CONFIRM",
+  --   --         ["rm"] = "MORE",
+  --   --         ["s"] = "SELECT",
+  --   --         ["t"] = "TERMINAL",
+  --   --         ["v"] = "VISUAL",
+  --   --         ["vs"] = "VISUAL",
+  --   --       },
+  --   --       MODE_COLORS = {
+  --   --         ["␓"] = colors.yellow,
+  --   --         ["␖"] = colors.yellow,
+  --   --         ["␖s"] = colors.yellow,
+  --   --         ["!"] = colors.maroon,
+  --   --         ["R"] = colors.flamingo,
+  --   --         ["Rc"] = colors.flamingo,
+  --   --         ["Rv"] = colors.rosewater,
+  --   --         ["Rx"] = colors.flamingo,
+  --   --         ["S"] = colors.teal,
+  --   --         ["V"] = colors.lavender,
+  --   --         ["Vs"] = colors.lavender,
+  --   --         ["c"] = colors.peach,
+  --   --         ["ce"] = colors.peach,
+  --   --         ["cv"] = colors.peach,
+  --   --         ["i"] = colors.green,
+  --   --         ["ic"] = colors.green,
+  --   --         ["ix"] = colors.green,
+  --   --         ["n"] = colors.blue,
+  --   --         ["niI"] = colors.blue,
+  --   --         ["niR"] = colors.blue,
+  --   --         ["niV"] = colors.blue,
+  --   --         ["no␖"] = colors.pink,
+  --   --         ["no"] = colors.pink,
+  --   --         ["noV"] = colors.pink,
+  --   --         ["nov"] = colors.pink,
+  --   --         ["nt"] = colors.red,
+  --   --         ["null"] = colors.pink,
+  --   --         ["r"] = colors.teal,
+  --   --         ["r?"] = colors.maroon,
+  --   --         ["rm"] = colors.sky,
+  --   --         ["s"] = colors.teal,
+  --   --         ["t"] = colors.red,
+  --   --         ["v"] = colors.mauve,
+  --   --         ["vs"] = colors.mauve,
+  --   --       },
+  --   --     },
+  --   --     provider = function(self)
+  --   --       local mode = self.mode:sub(1, 1)
+  --   --       return string.format("▌ %s ", self.MODE_NAMES[mode])
+  --   --     end,
+  --   --     hl = function(self)
+  --   --       local mode = self.mode:sub(1, 1)
+  --   --       return { fg = self.MODE_COLORS[mode], bg = colors.mantle, bold = true }
+  --   --     end,
+  --   --     update = {
+  --   --       "ModeChanged",
+  --   --     },
+  --   --   },
+  --   --   {
+  --   --     provider = "",
+  --   --     hl = { bg = colors.crust, fg = colors.mantle },
+  --   --   },
+  --   -- }
+  --
   --   local FileNameBlock = {
   --     init = function(self)
   --       self.filename = vim.api.nvim_buf_get_name(0)
@@ -153,18 +154,42 @@ return {
   --     end,
   --   }
   --
+  --   local FilePath = {
+  --     provider = function(self)
+  --       -- local filename = vim.fn.fnamemodify(self.filename, ":t") -- filename only
+  --       local dir = vim.fn.fnamemodify(self.filename, ":.")
+  --
+  --       local parts = vim.fn.split(dir, "/")
+  --
+  --       local modified_dir = table.concat(parts, " / ")
+  --
+  --       if modified_dir == "" then
+  --         return ""
+  --       end
+  --
+  --       if not conditions.width_percent_below(#modified_dir, 0.25) then
+  --         modified_dir = vim.fn.pathshorten(modified_dir)
+  --       end
+  --       return modified_dir .. ' /'
+  --     end,
+  --     hl = { fg = colors.overlay2, bold = true },
+  --   }
+  --
   --   local FileName = {
   --     provider = function(self)
-  --       local filename = vim.fn.fnamemodify(self.filename, ":t")
+  --       -- Extract the filename (without the path)
+  --       local filename = vim.fn.fnamemodify(self.filename, ":t")  -- ":t" extracts the filename
+  --
   --       if filename == "" then
   --         return "[No Name]"
   --       end
+  --
   --       if not conditions.width_percent_below(#filename, 0.25) then
   --         filename = vim.fn.pathshorten(filename)
   --       end
   --       return filename
   --     end,
-  --     hl = { fg = colors.subtext1, bold = true },
+  --     hl = { fg = colors.subtext0, bold = true },
   --   }
   --
   --   local FileFlags = {
@@ -194,6 +219,8 @@ return {
   --
   --   FileNameBlock = utils.insert(
   --     FileNameBlock,
+  --     -- FileIcon,
+  --     FilePath,
   --     FileIcon,
   --     utils.insert(FileNameModifer, FileName),
   --     unpack(FileFlags),
@@ -484,7 +511,7 @@ return {
   --
   --   heirline.setup({
   --     statusline = {
-  --       ViMode,
+  --       -- ViMode,
   --       FileNameBlock,
   --       Diagnostics,
   --       -- FileType,

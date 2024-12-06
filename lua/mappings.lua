@@ -128,8 +128,23 @@ api.nvim_set_keymap('n', '<leader>lg', ':LazyGit <cr>', options)
 -- api.nvim_set_keymap('n', '<leader>lgc', ':LazyGitFilterCurrentFile <cr>', options)
 
 -- Quick switch to current file scss & js
+-- `:r` removes the file extension
+-- `.scss` or `.js` add files extension to the modified filename
 api.nvim_set_keymap('n', '<leader>st', ':e %:r.scss <cr>', options)
 api.nvim_set_keymap('n', '<leader>js', ':e %:r.js <cr>', options)
+
+-- Quick switch to current file scss & js
+-- `:e` is edit command of vim
+-- `%` current file full path
+-- `:r` removes the file extension
+-- `.scss` or `.js` add files extension to the modified filename
+api.nvim_set_keymap('n', '<leader>st', ':e %:r.scss <cr>', options)
+api.nvim_set_keymap('n', '<leader>js', ':e %:r.js <cr>', options)
+
+-- Ruby on Rails: quick switch to rspec
+-- `%:s/^app/spec/` Replaces the app/ directory with spec/.
+-- `:r_spec.rb` Removes the file extension (.rb) and adds _spec.rb to the filename.
+api.nvim_set_keymap('n', '<leader>test', ':e %:s/^app/spec/:r_spec.rb <cr>', options)
 
 -- Dadbod UI
 api.nvim_set_keymap('n', '<leader>d', '<cmd>NvimTreeClose<cr><cmd>DBUIToggle<cr>', options)
