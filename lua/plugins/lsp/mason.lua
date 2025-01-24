@@ -24,6 +24,7 @@ return {
         "emmet_ls",
         "eslint",
         "lua_ls",
+        "ruby_lsp",
         "stylelint_lsp", -- css, less, scss, sass
         "ts_ls",
 
@@ -32,6 +33,7 @@ return {
         -- "stylelint",
 
         -- Formatter
+        "rubocop",
         -- "prettierd",
         -- "stylua",
       },

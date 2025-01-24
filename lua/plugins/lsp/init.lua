@@ -136,6 +136,14 @@ return {
         --   filetypes = { "ruby" },
         --   root_dir = util.root_pattern("Gemfile", ".git"),
         -- },
+        ruby_lsp = {
+          cmd = { 'ruby-lsp' },
+          filetypes = { 'ruby', 'eruby' },
+          init_options = {
+            formatter = 'auto',
+          },
+          single_file_support = true,
+        },
         stylelint_lsp = {
           filetypes = { "css", "less", "scss", "sass" },
           settings = {
