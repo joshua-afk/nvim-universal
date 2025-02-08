@@ -97,10 +97,12 @@ api.nvim_set_keymap('n', '<tab>', '<c-6>', options)
 -- vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, options)
 
 -- Telescope (File Pickers)
-api.nvim_set_keymap('n', '<leader>ff', ':lua require("telescope.builtin").find_files() <cr>', options)
+-- api.nvim_set_keymap('n', '<leader>ff', ':lua require("telescope.builtin").find_files() <cr>', options)
+api.nvim_set_keymap('n', '<leader>ff', ':lua require("telescope.builtin").find_files({layout_config={height=0.90,width=0.75}}) <cr>', options)
 api.nvim_set_keymap('n', '<leader>fg', ':lua require("telescope.builtin").live_grep() <cr>', options)
 api.nvim_set_keymap('n', '<leader>fb', ':lua require("telescope.builtin").buffers({layout_config={width=0.5}}) <cr>', options)
 api.nvim_set_keymap('n', '<leader>fh', ':lua require("telescope.builtin").help_tags() <cr>', options)
+api.nvim_set_keymap('n', '<leader>fo', ':lua require("telescope.builtin").oldfiles() <cr>', options)
 
 -- Telescope (Git)
 api.nvim_set_keymap('n', '<leader>fc', ':lua require("telescope.builtin").git_commits() <cr>', options)
@@ -183,6 +185,7 @@ end, options)
 
 -- LSP things
 api.nvim_set_keymap('n', '<c-]', '<cmd>lua vim.lsp.buf.definition()<cr>', options)
+-- api.nvim_set_keymap('n', '<leader>gd', '<cmd>lua vim.lsp.buf.definition()<cr>', options)
 api.nvim_set_keymap('n', '<leader>ft', '<cmd>lua vim.lsp.buf.format()<cr>', options)
 api.nvim_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', options)
 api.nvim_set_keymap('i', '<c-s>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', options)

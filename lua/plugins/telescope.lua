@@ -51,12 +51,15 @@ return {
           -- CTRL + Backspace to delete word when using telescope
           mappings = {
             i = {
+              ["<c-d>"] = "delete_buffer",
               ["<c-BS>"] = function()
                 vim.api.nvim_input "<C-W>"
               end,
             },
             n = {
-              ['<c-p>'] = require('telescope.actions.layout').toggle_preview
+              ["<c-d>"] = "delete_buffer",
+              ["dd"] = "delete_buffer",
+              ["<c-p>"] = require('telescope.actions.layout').toggle_preview
             }
           }
         },
@@ -73,7 +76,7 @@ return {
           find_files = {
             previewer = false,
             hidden = true,
-            -- theme = "dropdown" -- results is messed up in large codebase
+            theme = "dropdown", -- results is messed up in large codebase
           },
           buffers = {
             theme = "dropdown"

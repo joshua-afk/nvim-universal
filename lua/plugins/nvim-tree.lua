@@ -137,6 +137,9 @@ return {
             }
           },
         },
+        filters = {
+          dotfiles = true
+        },
         update_cwd = false,
         update_focused_file = {
           enable = false,
