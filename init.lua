@@ -9,15 +9,17 @@ o = vim.o
 opt = vim.opt
 
 -- Self assigned global variables
-g.left_sidebar_width = 55
+-- g.left_sidebar_width = 55
+g.left_sidebar_width = 45
 
 -- Disable providers
 g.loaded_perl_provider = 0
 
 -- Core
-require 'abbreviations'
-require 'settings'
-require 'mappings'
-require 'auto-commands'
-require 'lazy-plugins'
-require 'neovide'
+require 'core.settings'
+require 'core.abbreviations'
+require 'core.settings'
+require 'core.mappings'
+require 'core.auto-commands'
+require 'core.lazy-plugins'
+require 'core.neovide'

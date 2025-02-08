@@ -29,6 +29,7 @@ return {
         -- Highlight for the bullet icon
         highlight = 'RenderMarkdownBullet',
       },
+      latex = { enabled = false },
       quote = {
         -- Turn on / off block quote & callout rendering
         enabled = true,

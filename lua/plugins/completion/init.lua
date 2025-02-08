@@ -4,6 +4,7 @@ return {
     dependencies = {
       -- Snippets
       'L3MON4D3/LuaSnip',
+      'rafamadriz/friendly-snippets',
 
       -- cmp sources
       'hrsh7th/cmp-buffer',
@@ -34,10 +35,22 @@ return {
       })
 
       require("luasnip.loaders.from_snipmate").lazy_load({ paths = { snipmate_snippets_path } })
+      require("luasnip.loaders.from_vscode").lazy_load()
+
+      -- luasnip mappings
+      -- TODO: move this to `lua/mappings.lua`
+      keymap.set({"i"}, "<C-K>", function() luasnip.expand() end, {silent = true})
+      keymap.set({"i", "s"}, "<C-L>", function() luasnip.jump( 1) end, {silent = true})
+      keymap.set({"i", "s"}, "<C-J>", function() luasnip.jump(-1) end, {silent = true})
+      keymap.set({"i", "s"}, "<C-E>", function()
+        if luasnip.choice_active() then
+          luasnip.change_choice(1)
+        end
+      end, {silent = true})
 
       --## CMP
       local has_words_before = function()
-        if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
+        if api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))
         return col ~= 0 and vim.api.nvim_buf_get_text(0, line-1, 0, line-1, col, {})[1]:match("^%s*$") == nil
       end
@@ -88,10 +101,11 @@ return {
           })
         end,
         sources = cmp.config.sources {
+          -- TODO: what the fuck is group_index
+          { name = 'luasnip', group_index = 2 },
           { name = 'nvim_lsp' },
           { name = 'buffer', max_item_count = 5 },
           { name = 'copilot', group_index = 2 },
-          { name = 'luasnip', group_index = 2 }
         }
       }
 

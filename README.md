@@ -66,3 +66,12 @@
 ├── init.lua
 └── lazy-lock.json
 ```
+## ArchOS and variants
+`$ sudo pacman -S luarocks xclip`
+
+install fnm (fast node version manager)
+install latest version of node
+
+`$ npm install -g neovim`
+
+`$ sudo pacman -S luarocks`

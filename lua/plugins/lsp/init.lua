@@ -14,37 +14,37 @@ return {
       "nvimtools/none-ls.nvim",
       "nvimtools/none-ls-extras.nvim",
     },
-    config = function()
-      local lspconfig = require('lspconfig')
+    config = function ()
+      local lspconfig = require("lspconfig")
       local null_ls = require("null-ls")
 
-      local util = require 'lspconfig.util'
+      local util = require "lspconfig.util"
       local root_pattern = util.root_pattern
 
       -- local formatting = null_ls.builtins.formatting
       null_ls.setup({
         sources = {
-      --     -- lua
-      --     formatting.stylua,
-      --
-      --     -- js
+          --     -- lua
+          --     formatting.stylua,
+
+          -- js
           null_ls.builtins.formatting.prettierd.with({
-            condition = function(utils)
+            condition = function (utils)
               return utils.has_file({ ".prettierrc.js" })
             end,
           }),
-      --     -- require("none-ls.diagnostics.eslint"),
-      --     require("none-ls.code_actions.eslint"),
-      --
+          --     -- require("none-ls.diagnostics.eslint"),
+          --     require("none-ls.code_actions.eslint"),
+          --
           -- ruby
           -- null_ls.builtins.diagnostics.rubocop,
         }
       })
       -- Change lsp diagnostic icons
-      fn.sign_define("DiagnosticSignError", { text = '', texthl = "DiagnosticSignError" })
-      fn.sign_define("DiagnosticSignWarn", { text = '', texthl = "DiagnosticSignWarn" })
-      fn.sign_define("DiagnosticSignInfo", { text = '', texthl = "DiagnosticSignInfo" })
-      fn.sign_define("DiagnosticSignHint", { text = '', texthl = "DiagnosticSignHint" })
+      fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
+      fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })
+      fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo" })
+      fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
       -- List of lsp servers to configure
       local servers = {
@@ -102,7 +102,7 @@ return {
               },
               diagnostics = {
                 -- Get the language server to recognize the `vim` global
-                globals = { "api", "cmd",  "fn", "g", "keymap", "loop", "o", "opt" },
+                globals = { "api", "cmd", "fn", "g", "keymap", "loop", "o", "opt" },
               },
               workspace = {
                 -- Make the server aware of Neovim runtime files and plugins
@@ -137,10 +137,10 @@ return {
         --   root_dir = util.root_pattern("Gemfile", ".git"),
         -- },
         ruby_lsp = {
-          cmd = { 'ruby-lsp' },
-          filetypes = { 'ruby', 'eruby' },
+          cmd = { "ruby-lsp" },
+          filetypes = { "ruby", "eruby" },
           init_options = {
-            formatter = 'auto',
+            formatter = "auto",
           },
           single_file_support = true,
         },
@@ -154,7 +154,7 @@ return {
           },
           root_dir = {
             root_pattern("jsconfig.json", "package.json", ".git")
-         }
+          }
         }
       }
 
@@ -168,17 +168,17 @@ return {
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-      local default_capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+      local default_capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
       -- Autoload keymaps when lsp is triggered
-      local on_attach = function(_, bufnr)
+      local on_attach = function (_, bufnr)
         local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
         -- local ca = g.mapping_code_action
         -- keymap.set('n', '<c-a>', vim.lsp.buf.code_action, bufopts)
         -- vim.keymap.set(ca.mode, ca.mapping, ca.command, bufopts)
         -- vim.keymap.set('n', 'C', '<cmd>lua vim.lsp.buf.code_action({ apply=true })')
-        vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
       end
 
       -- Setup lsp servers recursively
