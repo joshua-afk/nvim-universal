@@ -1,10 +1,11 @@
 return {
-  "rebelot/heirline.nvim",
-  lazy = false,
-  dependencies = {
-    "nvim-tree/nvim-web-devicons",
-    "neovim/nvim-lspconfig",
-  },
+  -- "rebelot/heirline.nvim",
+  -- lazy = false,
+  -- enable = false,
+  -- dependencies = {
+  --   "nvim-tree/nvim-web-devicons",
+  --   "neovim/nvim-lspconfig",
+  -- },
   -- config = function()
   --   local heirline = require("heirline")
   --   local conditions = require("heirline.conditions")

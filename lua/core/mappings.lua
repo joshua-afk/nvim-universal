@@ -123,9 +123,13 @@ map('n', '<leader>fdf', ':FileInDirectory <cr>', options)
 map('n', '<leader>fdg', ':GrepInDirectory <cr>', options)
 
 -- nvim-tree
-map('n', '<leader>e', '<cmd>DBUIClose<cr><cmd>NvimTreeToggle<cr>', options)
-map('n', '<leader>r', ':NvimTreeRefresh <cr>', options)
-map('n', '<leader>i', ':NvimTreeFindFile <cr>', options)
+-- map('n', '<leader>e', '<cmd>DBUIClose<cr><cmd>NvimTreeToggle<cr>', options)
+-- map('n', '<leader>r', ':NvimTreeRefresh <cr>', options)
+-- map('n', '<leader>i', ':NvimTreeFindFile <cr>', options)
+
+-- neo-tree
+map('n', '<leader>e', '<cmd>Neotree toggle<cr>', options)
+map('n', '<leader>i', '<cmd>Neotree reveal<cr>', options)
 
 -- Lazygit
 map('n', '<leader>lg', ':LazyGit <cr>', options)
@@ -151,7 +155,8 @@ map('n', '<leader>js', ':e %:r.js <cr>', options)
 map('n', '<leader>test', ':e %:s/^app/spec/:r_spec.rb <cr>', options)
 
 -- Dadbod UI
-map('n', '<leader>d', '<cmd>NvimTreeClose<cr><cmd>DBUIToggle<cr>', options)
+-- map('n', '<leader>d', '<cmd>NvimTreeClose<cr><cmd>DBUIToggle<cr>', options)
+map('n', '<leader>d', '<cmd>Neotree close<cr><cmd>DBUIToggle<cr>', options)
 
 -- Git BLame
 map('n', '<leader>gb', ':GitBlameToggle <cr>', options)

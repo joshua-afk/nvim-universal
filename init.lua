@@ -16,10 +16,10 @@ g.left_sidebar_width = 45
 g.loaded_perl_provider = 0
 
 -- Core
-require 'core.settings'
 require 'core.abbreviations'
-require 'core.settings'
-require 'core.mappings'
 require 'core.auto-commands'
+require 'core.highlights'
 require 'core.lazy-plugins'
+require 'core.mappings'
 require 'core.neovide'
+require 'core.settings'

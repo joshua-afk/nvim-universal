@@ -14,23 +14,18 @@ opt.rtp:prepend(lazypath)
 
 local plugins = {
   { import = "plugins" },
+  { import = "plugins.colorschemes.init" },
   { import = "plugins.completion" },
   { import = "plugins.core" },
   { import = "plugins.database" },
-  { import = "plugins.diagnostics" },
+  -- { import = "plugins.diagnostics" },
   { import = "plugins.debugging" },
-  { import = "plugins.linters" },
+  { import = "plugins.git" },
+  -- { import = "plugins.linters" },
   { import = "plugins.lsp" },
   { import = "plugins.navigation" },
-  { import = "plugins.obsidian" },
-
-  -- Colorschemes
-  -- { import = "plugins.colorschemes.catppuccin" },
-  -- { import = "plugins.colorschemes.deepwhite" },
-  -- { import = "plugins.colorschemes.papercolor" },
-  -- { import = "plugins.colorschemes.tokyo-night" },
-  -- { import = "plugins.colorschemes.gruvbox-material" },
-  { import = "plugins.colorschemes.nightfox" },
+  { import = "plugins.nice-to-have" },
+  -- { import = "plugins.obsidian" },
 
   -- Core
   'chrisbra/vim-diff-enhanced',

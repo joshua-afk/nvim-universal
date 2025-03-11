@@ -75,3 +75,6 @@ install latest version of node
 `$ npm install -g neovim`
 
 `$ sudo pacman -S luarocks`
+
+- Dependencies for image.nvim
+`$paru -S ueberzugpp`

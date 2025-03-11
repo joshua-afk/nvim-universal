@@ -1,4 +1,6 @@
 -- TODO: Obsidian nvim and this plugin might be conflicting each other.
+-- Improved Markdown file viewing in Neovim 
+
 return {
   -- 'render-markdown.nvim'
   {
