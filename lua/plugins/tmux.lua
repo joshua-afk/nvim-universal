@@ -5,7 +5,7 @@ local M = {
 function M.config()
   return require("tmux").setup({
     copy_sync = {
-      enable = true,
+      enable = false,
       -- redirect_to_clipboard = true,
       -- sync_registers_keymap_put = true,
       -- sync_registers_keymap_reg = true,
