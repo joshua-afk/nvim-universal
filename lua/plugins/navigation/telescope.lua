@@ -1,37 +1,52 @@
 local M = {
   'nvim-telescope/telescope.nvim',
+  event = 'VimEnter',
   dependencies = {
     'nvim-lua/plenary.nvim',
-    'kdheepak/lazygit.nvim',
     'nvim-tree/nvim-web-devicons',
     {
       'nvim-telescope/telescope-fzf-native.nvim',
       build = 'make'
-    }
+    },
+    "kdheepak/lazygit.nvim",
   },
   priority = 1000,
   tag = '0.1.8'
 }
 
+local ignore_these = {
+  '.git/.*',
+  '.neuron',
+  '.yarn',
+  'build',
+  'dist',
+  'eslintReport.json',
+  'fonts',
+  'icons',
+  'images',
+  'node_modules',
+  'package-lock.json',
+  'tags',
+  'vendor',
+  'yarn.lock'
+}
+
+local mappings = {
+  i = {
+    ["<c-d>"] = "delete_buffer",
+    ["<c-BS>"] = function()
+      api.nvim_input "<C-W>"
+    end,
+  },
+  n = {
+    ["<c-d>"] = "delete_buffer",
+    ["dd"] = "delete_buffer",
+    ["<c-p>"] = require('telescope.actions.layout').toggle_preview
+  }
+}
+
 function M.config()
   local telescope = require('telescope')
-
-  local ignore_these = {
-    '.git/.*',
-    '.neuron',
-    '.yarn',
-    'build',
-    'dist',
-    'eslintReport.json',
-    'fonts',
-    'icons',
-    'images',
-    'node_modules',
-    'package-lock.json',
-    'tags',
-    'vendor',
-    'yarn.lock'
-  }
 
   telescope.setup({
     defaults = {
@@ -50,19 +65,7 @@ function M.config()
       color_devicons = true,
       file_ignore_patterns = ignore_these,
       -- CTRL + Backspace to delete word when using telescope
-      mappings = {
-        i = {
-          ["<c-d>"] = "delete_buffer",
-          ["<c-BS>"] = function()
-            vim.api.nvim_input "<C-W>"
-          end,
-        },
-        n = {
-          ["<c-d>"] = "delete_buffer",
-          ["dd"] = "delete_buffer",
-          ["<c-p>"] = require('telescope.actions.layout').toggle_preview
-        }
-      }
+      mappings = mappings
     },
     extensions = {
       fzf = {
@@ -92,6 +95,7 @@ function M.config()
 
   -- Extensions
   telescope.load_extension('fzf')
+  telescope.load_extension('quicknote')
   telescope.load_extension('lazygit')
 end
 

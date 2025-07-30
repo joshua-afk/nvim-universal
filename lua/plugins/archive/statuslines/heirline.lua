@@ -1,3 +1,4 @@
+-- More customizable but hard to setup
 return {
   -- "rebelot/heirline.nvim",
   -- lazy = false,

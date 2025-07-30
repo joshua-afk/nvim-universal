@@ -7,7 +7,7 @@ o.shiftwidth=2
 o.conceallevel=2
 
 -- Ruler
-o.cc='80'
+-- o.cc='80'
 
 -- Text wrap (soft-wrap)
 opt.textwidth=80

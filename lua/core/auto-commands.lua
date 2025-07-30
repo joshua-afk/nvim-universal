@@ -3,29 +3,29 @@ api = vim.api
 -- Cursor Line
 local cursor_line = api.nvim_create_augroup('CursorLine', {clear = true})
 
-api.nvim_create_autocmd('VimEnter', {
+api.nvim_create_autocmd({'VimEnter', "WinEnter", "BufWinEnter", "WinLeave"}, {
   pattern = '*',
   group = cursor_line,
   command = 'setlocal cursorline'
 })
 
-api.nvim_create_autocmd('WinEnter', {
-  pattern = '*',
-  group = cursor_line,
-  command = 'setlocal cursorline'
-})
+-- api.nvim_create_autocmd('WinEnter', {
+--   pattern = '*',
+--   group = cursor_line,
+--   command = 'setlocal cursorline'
+-- })
 
-api.nvim_create_autocmd('BufWinEnter', {
-  pattern = '*',
-  group = cursor_line,
-  command = 'setlocal cursorline'
-})
+-- api.nvim_create_autocmd('BufWinEnter', {
+--   pattern = '*',
+--   group = cursor_line,
+--   command = 'setlocal cursorline'
+-- })
 
-api.nvim_create_autocmd('WinLeave', {
-  pattern = '*',
-  group = cursor_line,
-  command = 'setlocal nocursorline'
-})
+-- api.nvim_create_autocmd('WinLeave', {
+--   pattern = '*',
+--   group = cursor_line,
+--   command = 'setlocal nocursorline'
+-- })
 
 -- Buffer
 api.nvim_create_autocmd('FileType', {

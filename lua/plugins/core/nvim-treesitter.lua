@@ -4,13 +4,15 @@
 local M = {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
+  event = { "VeryLazy" },
   dependencies = {
-    "nvim-treesitter/nvim-treesitter-textobjects"
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    "RRethy/nvim-treesitter-endwise"
   }
 }
 
 function M.config()
-  local config = require("nvim-treesitter.configs")
+  local ts = require("nvim-treesitter.configs")
 
   local languages = {
     "bash",
@@ -32,7 +34,7 @@ function M.config()
     "xml",
   }
 
-  config.setup({
+  ts.setup({
     auto_install = true,
     ensure_installed = languages,
     sync_install = false,

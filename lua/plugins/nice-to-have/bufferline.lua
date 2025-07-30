@@ -5,12 +5,12 @@ local M = {
 }
 
 function M.config()
-  local bufferline = require('bufferline')
-  bufferline.setup({
+  require("bufferline").setup {
     options = {
       offsets = {
         {
-          filetype = "NvimTree",
+          -- filetype = "NvimTree"
+          filetype = "neo-tree",
           text = "File Explorer",
           text_align = "center",
           highlight = "Directory",
@@ -18,7 +18,7 @@ function M.config()
         }
       }
     }
-  })
+  }
 end
 
 return M

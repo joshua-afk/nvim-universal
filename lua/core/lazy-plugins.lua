@@ -15,38 +15,40 @@ opt.rtp:prepend(lazypath)
 local plugins = {
   { import = "plugins" },
   { import = "plugins.colorschemes.init" },
-  { import = "plugins.completion" },
   { import = "plugins.core" },
   { import = "plugins.database" },
-  -- { import = "plugins.diagnostics" },
   { import = "plugins.debugging" },
   { import = "plugins.git" },
-  -- { import = "plugins.linters" },
   { import = "plugins.lsp" },
   { import = "plugins.navigation" },
   { import = "plugins.nice-to-have" },
+  -- { import = "plugins.completion" },
+  -- { import = "plugins.diagnostics" },
+  -- { import = "plugins.linters" },
   -- { import = "plugins.obsidian" },
 
   -- Core
   'chrisbra/vim-diff-enhanced',
-  'junegunn/vim-easy-align',
   'tpope/vim-surround',
   'tpope/vim-repeat',
   'jiangmiao/auto-pairs',
 
+  -- Formatting
+  'tommcdo/vim-lion', -- align text by some character
+
   -- Navigation
-  -- { 'mg979/vim-visual-multi', branch = 'master' },
-  'MattesGroeger/vim-bookmarks',
+  -- 'MattesGroeger/vim-bookmarks',
   'psliwka/vim-smoothie',
 
   -- Linting
-  'sheerun/vim-polyglot',
+  -- 'sheerun/vim-polyglot',
   -- 'mfussenegger/nvim-lint',
   'digitaltoad/vim-pug',
   'jwalton512/vim-blade',
   'pangloss/vim-javascript',
   'statico/vim-javascript-sql',
-  'vim-ruby/vim-ruby',
+  -- 'vim-ruby/vim-ruby',
+  -- 'tpope/vim-rails',
   'godlygeek/tabular',
   'MaxMEllon/vim-jsx-pretty',
   'joereynolds/sql-lint',
@@ -57,26 +59,18 @@ local plugins = {
   -- Git
   'tpope/vim-fugitive',
 
-  -- SNIPPET
-  -- 'L3MON4D3/LuaSnip',
-  -- 'hrsh7th/nvim-cmp',
-  -- 'hrsh7th/cmp-buffer',
-  -- 'hrsh7th/cmp-path',
-  -- 'hrsh7th/cmp-cmdline',
-  -- 'rafamadriz/friendly-snippets',
-  -- 'saadparwaiz1/cmp_luasnip',
+  -- Debugging
+  'vim-test/vim-test',
 
   -- Etc
   -- Vim sugar for the UNIX shell commands that need it the most.
   -- 'tpope/vim-eunuch',
+
+  -- Archive
+  -- 'junegunn/vim-easy-align',
 }
 
 local opts = {
-  -- install = {
-  --   -- colorscheme = { "catppuccin" }
-  --   -- colorscheme = { "tokyonight" }
-  --   -- colorscheme = { "deepwhite" }
-  -- },
   change_detection = {
     enabled = false,
     notify = false,
