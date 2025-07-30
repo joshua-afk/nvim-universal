@@ -24,3 +24,8 @@ require 'core.neovide'
 require 'core.settings'
 require 'core.lsp'
 -- require 'search_with_index'
+
+require 'auto-commands.auto-reload'
+require 'auto-commands.buffer'
+require 'auto-commands.cursor-line'
+-- require 'auto-commands.highlight-yank'

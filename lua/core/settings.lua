@@ -1,3 +1,6 @@
+local o   = vim.o
+local opt = vim.opt
+
 o.termguicolors = true
 o.encoding='UTF-8'
 o.hidden=true
@@ -7,7 +10,6 @@ o.shortmess=o.shortmess .. "c"
 o.scrolloff=8
 o.number=true
 o.relativenumber=true
-o.cursorline=true
 o.laststatus=2
 o.linespace=4
 o.showmode=true
