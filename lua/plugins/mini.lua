@@ -6,9 +6,9 @@ local M = {
 }
 
 function M.config()
-  local statusline = require("mini.statusline")
-
-  statusline.setup()
+  -- local statusline = require("mini.statusline")
+  --
+  -- statusline.setup()
 end
 
 return M

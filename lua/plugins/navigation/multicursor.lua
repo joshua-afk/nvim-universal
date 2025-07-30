@@ -19,9 +19,6 @@ function M.config()
   set({"n", "v"}, "<leader><down>",
     function() mc.lineSkipCursor(1) end)
 
-  -- Add or skip adding a new cursor by matching word/selection
-  set({"n", "v"}, "<leader>n",
-    function() mc.matchAddCursor(1) end)
   set({"n", "v"}, "<leader>s",
     function() mc.matchSkipCursor(1) end)
   set({"n", "v"}, "<leader>N",

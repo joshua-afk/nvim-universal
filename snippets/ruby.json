@@ -1,0 +1,86 @@
+{
+  "ARRAY: (Delete/Remove) (value/element) in array": {
+    "prefix": "delete",
+    "body": "@array.delete(value)"
+  },
+  "ARRAY: add (element/value) in array": {
+    "prefix": "push",
+    "body": "@array.push(value)\n\t# If only one element use this instead (faster)\n\t@array << value"
+  },
+  "ARRAY: array to string": {
+    "prefix": "join",
+    "body": "@array.join(',')"
+  },
+  "ARRAY: count number of elements in array": {
+    "prefix": "count",
+    "body": "array = ['name', 'gender', 'age', 'name']\n\tarray.count() # -> 4\n\tarray.count('name') # -> 2"
+  },
+  "ARRAY: map invokes the given block once for each (element/value) of (self/array)": {
+    "prefix": "map",
+    "body": "map_result = @array.map { |key| k + '!' }\n\t# OR Override the array values\n\t@array_names.map! { |key| k + ' Surname' }"
+  },
+  "ARRAY: remove duplicate (values/elements/keys) of array": {
+    "prefix": "uniq",
+    "body": "a = [ \"a\", \"a\", \"b\", \"b\", \"c\" ]\n\ta.uniq   # => [\"a\", \"b\", \"c\"]\n# ==CUSTOM=="
+  },
+  "ARRAY: same as map": {
+    "prefix": "collect",
+    "body": "# same as map, refer to map too\n\t['a', 'b', 'c'].collect(&:capitalize)"
+  },
+  "CUSTOM: get current date from database": {
+    "prefix": "get-date-time",
+    "body": "date_time = Db.find_by_sql('SELECT GETDATE() AS Date')[0].Date"
+  },
+  "CUSTOM: get current time from database": {
+    "prefix": "get-time-now",
+    "body": "time_now = Db.find_by_sql('SELECT GETDATE() AS TimeNow')[0]\n# ==TRICKS=="
+  },
+  "CUSTOM: output text with style": {
+    "prefix": "dummy",
+    "body": [
+      "puts '=========================================='",
+      "pp $1",
+      "puts '=========================================='"
+    ]
+  },
+  "LOOP: Basic loop": {
+    "prefix": "elsif",
+    "body": "if one < two\n\t\t# code here\n\telsif two < one\n\t\t# code here\n\tend"
+  },
+  "LOOP: Case Statement": {
+    "prefix": "case",
+    "body": "str = 'three'\n\tcase str \n\t\twhen 'one'  \n\t\t  puts 'Input is 1'\n\t\twhen 'two'  \n\t\t  puts 'Input is 2'\n\t\telse  \n\t\t  puts 'Default!'\n\tend  \n# ==ARRAY=="
+  },
+  "LOOP: For loop ruby way": {
+    "prefix": "each",
+    "body": "@collection.each do |c|\n\t\t#\n\tend"
+  },
+  "LOOP: Sugar of each loop": {
+    "prefix": "for",
+    "body": "for c in @collection\n\t\t#\n\tend"
+  },
+  "LOOP: if statement in one line": {
+    "prefix": "if-one-line",
+    "body": "Db.execute(query) if !query.blank?"
+  },
+  "TRICKS: (delete/remove) multiple (elements/keys/values) in array": {
+    "prefix": "delete-keys-in-array",
+    "body": "[keys_to_delete].each { |key| @array.delete key }\n\t# OR\n\tarray.except!(*[keys_to_delete])"
+  },
+  "TRICKS: array to string collection for query": {
+    "prefix": "join-split",
+    "body": "@array.join(',').split(',')"
+  },
+  "TRICKS: find key value in another array": {
+    "prefix": "find-key-value-in-array",
+    "body": "value = current_array.find { |ca| ca['Id'] == other_array['Id'] }"
+  },
+  "TRICKS: push (value/key/string) (if/when)": {
+    "prefix": "push-selected-keys",
+    "body": "@collection.each do |c|\n\t\t@new_collection.push(c['Id']) if !c['Id'].nil?\n\tend"
+  },
+  "hash": {
+    "prefix": "hash",
+    "body": "grades = { \"Jane Doe\" => 10, \"Jim Doe\" => 6 }\n\t# OR\n\tgrades = Hash.new\n\tgrades[\"Dorothy Doe\"] = 9"
+  }
+}
