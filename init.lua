@@ -16,16 +16,17 @@ g.loaded_perl_provider = 0
 
 -- Core
 require 'core.abbreviations'
-require 'core.auto-commands'
+require 'core.diagnostic'
 require 'core.highlights'
 require 'core.lazy-plugins'
+require 'core.lsp'
 require 'core.mappings'
 require 'core.neovide'
 require 'core.settings'
-require 'core.lsp'
 -- require 'search_with_index'
 
 require 'auto-commands.auto-reload'
 require 'auto-commands.buffer'
 require 'auto-commands.cursor-line'
 -- require 'auto-commands.highlight-yank'
+require 'auto-commands.nvim-lint'
