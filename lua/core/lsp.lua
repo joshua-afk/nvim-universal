@@ -48,9 +48,9 @@ keymap.set('n', '<leader>j', function()
   vim.diagnostic.goto_next()
 end, options)
 
-keymap.set('n', '<leader>k', function()
-  vim.diagnostic.open_float()
-end, options)
+-- keymap.set('n', '<leader>k', function()
+--   vim.diagnostic.open_float()
+-- end, options)
 
 -- vim.api.nvim_create_autocmd('LspAttach', {
 --   callback = function(event)

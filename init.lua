@@ -22,7 +22,7 @@ require 'core.lazy-plugins'
 require 'core.lsp'
 require 'core.mappings'
 require 'core.neovide'
-require 'core.settings'
+require 'core.options'
 -- require 'search_with_index'
 
 require 'auto-commands.auto-reload'

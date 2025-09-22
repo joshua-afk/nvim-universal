@@ -104,6 +104,20 @@ map('n', '<tab>', '<c-6>', options)
 
 -- ===========================
 -- ===                     ===
+-- === DIAGNOSTICS KEYMAPS ===
+-- ===                     ===
+-- ===========================
+keymap.set('n', '<leader>K', function()
+  local new_config = not vim.diagnostic.config().virtual_lines
+  vim.diagnostic.config({ virtual_lines = new_config })
+end, { desc = 'Toggle diagnostic virtual_lines' })
+
+keymap.set('n', '<leader>k', function()
+  vim.diagnostic.open_float()
+end, options)
+
+-- ===========================
+-- ===                     ===
 -- ===   PLUGINS KEYMAPS   ===
 -- ===                     ===
 -- ===========================
