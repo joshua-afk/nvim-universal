@@ -6,8 +6,9 @@ vim.lsp.enable({
   "emmet_ls",
   "lua_ls",
   "ruby_lsp",
-  "stylelint_lsp",
+  -- "stylelint_lsp",
   -- "eslint",
+  -- "ts_ls",
 })
 
 local options = { noremap = true, silent = true }

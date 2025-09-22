@@ -18,13 +18,14 @@ local plugins = {
   { import = "plugins.core" },
   { import = "plugins.database" },
   { import = "plugins.debugging" },
+  { import = "plugins.formatters" },
   { import = "plugins.git" },
+  { import = "plugins.linters" },
   { import = "plugins.lsp" },
   { import = "plugins.navigation" },
   { import = "plugins.nice-to-have" },
   -- { import = "plugins.completion" },
   -- { import = "plugins.diagnostics" },
-  -- { import = "plugins.linters" },
   -- { import = "plugins.obsidian" },
 
   -- Core
@@ -57,7 +58,8 @@ local plugins = {
   'ap/vim-css-color',
 
   -- Git
-  'tpope/vim-fugitive',
+  -- 'tpope/vim-fugitive',
+  -- 'tpope/vim-rhubarb',
 
   -- Debugging
   'vim-test/vim-test',

@@ -3,6 +3,12 @@ local map = api.nvim_set_keymap
 
 -- local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
+-- ===========================
+-- ===                     ===
+-- ===     VIM KEYMAPS     ===
+-- ===                     ===
+-- ===========================
+
 -- Remap Leader
 keymap.set("n", "<Space>", "<Nop>", { silent = true, remap = false })
 g.mapleader = " "
@@ -14,6 +20,8 @@ end, options)
 -- CTRL + Backspace to delete word in nvim
 -- NOTE: Disable Ctrl + Backspace mapping in alacritty
 map('i', "<C-BS>", "<C-W>", options)
+
+map('n', 'yc', 'yygccp', { noremap = false, desc = "[Y]ank and paste then comment out the first line" })
 
 -- Quickly open vimrc
 map('n', '<leader>vrc', ':vsplit $MYVIMRC <cr>', options)
@@ -94,8 +102,74 @@ map('n', 'zz', 'zf%', options)
 -- Swith between 2 latest buffers
 map('n', '<tab>', '<c-6>', options)
 
+-- ===========================
+-- ===                     ===
+-- ===   PLUGINS KEYMAPS   ===
+-- ===                     ===
+-- ===========================
+
+-- Bufferline
+map('n', '<leader>1', '<cmd>BufferLineGoToBuffer 1<cr>', options)
+map('n', '<leader>2', '<cmd>BufferLineGoToBuffer 2<cr>', options)
+map('n', '<leader>3', '<cmd>BufferLineGoToBuffer 3<cr>', options)
+map('n', '<leader>4', '<cmd>BufferLineGoToBuffer 4<cr>', options)
+map('n', '<leader>5', '<cmd>BufferLineGoToBuffer 5<cr>', options)
+map('n', '<leader>6', '<cmd>BufferLineGoToBuffer 6<cr>', options)
+map('n', '<leader>7', '<cmd>BufferLineGoToBuffer 7<cr>', options)
+map('n', '<leader>8', '<cmd>BufferLineGoToBuffer 8<cr>', options)
+map('n', '<leader>9', '<cmd>BufferLineGoToBuffer 9<cr>', options)
+map('n', '<leader>$', '<cmd>BufferLineGoToBuffer $<cr>', options)
+
+-- Chainsaw
+map('n', '<leader>cl', '<cmd>lua require("chainsaw").variableLog()<cr>', options)
+map('n', '<leader>cc', '<cmd>lua require("chainsaw").clearLog()<cr>', options)
+map('n', '<leader>ce', '<cmd>lua require("chainsaw").emojiLog()<cr>', options)
+map('n', '<leader>cr', '<cmd>lua require("chainsaw").removeLogs()<cr>', options)
+
 -- Comment
 -- map('v', "<c-'>", "ysiw'", options)
+
+-- Conform
+map('n', '<leader>ft', '<cmd>lua require("conform").format()<cr>', options)
+
+-- Dadbod UI
+-- map('n', '<leader>d', '<cmd>NvimTreeClose<cr><cmd>DBUIToggle<cr>', options)
+map('n', '<leader>d', '<cmd>Neotree close<cr><cmd>DBUIToggle<cr>', options)
+
+-- Git Blame
+map('n', '<leader>gb', ':GitBlameToggle <cr>', options)
+map('n', '<leader>go', ':GitBlameOpenCommitURL <cr>', options)
+
+-- Git Blame
+map('n', '<leader>gd', '<cmd>Gdiffsplit<cr>', options)
+
+-- Lazygit
+map('n', '<leader>lg', ':LazyGit <cr>', options)
+map('n', '<leader>lc', ':LazyGitFilterCurrentFile <cr>', options)
+-- map('n', '<leader>lg', '<cmd>lua _lazygit_toggle()<CR>', options)
+
+-- MultiCursor:START --
+local mc = require("multicursor-nvim")
+
+-- Add or skip adding a new cursor by matching word/selection
+keymap.set({'n', 'v'}, '<leader>n', function()
+  mc.matchAddCursor(1)
+end, options)
+-- MultiCursor:END --
+
+-- Neo-Tree
+-- map('n', '<leader>e', '<cmd>Neotree toggle<cr>', options)
+map('n', '<leader>e', '<cmd>DBUIClose<cr><cmd>Neotree toggle<cr>', options)
+map('n', '<leader>i', '<cmd>Neotree reveal<cr>', options)
+
+-- QuickNote (mapping inspiration got from vim-bookmark, just changed the `m` to `s`)
+map('n', '<leader>st', '<cmd>lua require("quicknote").ToggleNoteSigns()<cr>', options)
+map('n', '<leader>ss', '<cmd>lua require("quicknote").NewNoteAtCurrentLine()<cr>', options)
+map('n', '<leader>sd', '<cmd>lua require("quicknote").DeleteNoteAtCurrentLine()<cr>', options)
+map('n', '<leader>sf', '<cmd>Telescope quicknote scope=CurrentBuffer<cr>', options)
+map('n', '<leader>sa', '<cmd>lua require("quicknote").ListNotesForCurrentBuffer()<cr>', options)
+map('n', '<leader>sn', '<cmd>lua require("quicknote").JumpToNextNote()<cr>', options)
+-- map('n', '<leader>sp', '<cmd>lua require("quicknote").JumpToPreviousNote()<cr>', options)
 
 -- Telescope (File Pickers)
 -- map('n', '<leader>ff', ':lua require("telescope.builtin").find_files() <cr>', options)
@@ -106,36 +180,40 @@ map('n', '<leader>fh', ':lua require("telescope.builtin").help_tags() <cr>', opt
 map('n', '<leader>fl', ':lua require("telescope.builtin").highlights() <cr>', options)
 map('n', '<leader>fo', ':lua require("telescope.builtin").oldfiles() <cr>', options)
 
+-- Telescope (Dir)
+map('n', '<leader>fdf', ':FileInDirectory <cr>', options)
+map('n', '<leader>fdg', ':GrepInDirectory <cr>', options)
+
 -- Telescope (Git)
 map('n', '<leader>fc', ':lua require("telescope.builtin").git_commits() <cr>', options)
 -- map('n', '<leader>fgb', ':lua require("telescope.builtin").git_branches() <cr>', options)
 map('n', '<leader>fs', ':lua require("telescope.builtin").git_status() <cr>', options)
 
--- -- Telescope (Git)
--- map('n', '<leader>snip', ':Telescope luasnip <cr>', { noremap = true })
-
 -- Telescope (Misc)
 map('n', '<leader>fr', ':Telescope resume <cr>', options)
+-- map('n', '<leader>snip', ':Telescope luasnip <cr>', { noremap = true })
 
--- Dir-Telescope
-map('n', '<leader>fdf', ':FileInDirectory <cr>', options)
+-- ToggleTerm
+-- map('n', '<leader>ft', ':ToggleTerm<cr>', options)
 
-map('n', '<leader>fdg', ':GrepInDirectory <cr>', options)
+-- Undotree
+map('n', '<leader>u', ':lua require("undotree").toggle() <cr>', options)
 
--- nvim-tree
--- map('n', '<leader>e', '<cmd>DBUIClose<cr><cmd>NvimTreeToggle<cr>', options)
--- map('n', '<leader>r', ':NvimTreeRefresh <cr>', options)
--- map('n', '<leader>i', ':NvimTreeFindFile <cr>', options)
+-- vim-test (list of commands: https://github.com/vim-test/vim-test?tab=readme-ov-file#setup)
+map('n', '<leader>tt', '<cmd>TestNearest<cr>', options)
+map('n', '<leader>TT', '<cmd>TestFile<cr>', options)
 
--- neo-tree
--- map('n', '<leader>e', '<cmd>Neotree toggle<cr>', options)
-map('n', '<leader>e', '<cmd>DBUIClose<cr><cmd>Neotree toggle<cr>', options)
-map('n', '<leader>i', '<cmd>Neotree reveal<cr>', options)
+-- ===========================
+-- ===                     ===
+-- ===   CUSTOM KEYMAPS    ===
+-- ===                     ===
+-- ===========================
 
--- Lazygit
-map('n', '<leader>lg', ':LazyGit <cr>', options)
-map('n', '<leader>lc', ':LazyGitFilterCurrentFile <cr>', options)
--- map('n', '<leader>lg', '<cmd>lua _lazygit_toggle()<CR>', options)
+-- Ruby on Rails: quick switch to rspec
+-- `%:s/^app/spec/` Replaces the app/ directory with spec/.
+-- `:r_spec.rb` Removes the file extension (.rb) and adds _spec.rb to the filename.
+-- map('n', '<leader>test', ':e %:s/^app/spec/:r_spec.rb <cr>', options)
+map('n', '<leader>test', ':e %:s/app/spec/:r_spec.rb <cr>', options)
 
 -- Quick switch to current file scss & js
 -- `:r` removes the file extension
@@ -151,72 +229,8 @@ map('n', '<leader>lc', ':LazyGitFilterCurrentFile <cr>', options)
 map('n', '<leader>st', ':e %:r.scss <cr>', options)
 map('n', '<leader>js', ':e %:r.js <cr>', options)
 
--- Ruby on Rails: quick switch to rspec
--- `%:s/^app/spec/` Replaces the app/ directory with spec/.
--- `:r_spec.rb` Removes the file extension (.rb) and adds _spec.rb to the filename.
--- map('n', '<leader>test', ':e %:s/^app/spec/:r_spec.rb <cr>', options)
-map('n', '<leader>test', ':e %:s/app/spec/:r_spec.rb <cr>', options)
-
--- Dadbod UI
--- map('n', '<leader>d', '<cmd>NvimTreeClose<cr><cmd>DBUIToggle<cr>', options)
-map('n', '<leader>d', '<cmd>Neotree close<cr><cmd>DBUIToggle<cr>', options)
-
--- Git BLame
-map('n', '<leader>gb', ':GitBlameToggle <cr>', options)
-map('n', '<leader>go', ':GitBlameOpenCommitURL <cr>', options)
-
 -- Zen
-map('n', '<leader>z', '<cmd>ZenMode<cr>', options)
-
-
--- Undotree
-map('n', '<leader>u', ':lua require("undotree").toggle() <cr>', options)
--- ToggleTerm
-map('n', '<leader>ft', ':ToggleTerm<cr>', options)
-
--- START Debugging
--- Chainsaw
-map('n', '<leader>cl', '<cmd>lua require("chainsaw").variableLog()<cr>', options)
-map('n', '<leader>cc', '<cmd>lua require("chainsaw").clearLog()<cr>', options)
-map('n', '<leader>ce', '<cmd>lua require("chainsaw").emojiLog()<cr>', options)
-map('n', '<leader>cr', '<cmd>lua require("chainsaw").removeLogs()<cr>', options)
-
--- vim-test (list of commands: https://github.com/vim-test/vim-test?tab=readme-ov-file#setup)
-map('n', '<leader>tt', '<cmd>TestNearest<cr>', options)
-map('n', '<leader>TT', '<cmd>TestFile<cr>', options)
-
--- END Debugging
-
--- START: MultiCursor
-local mc = require("multicursor-nvim")
-
--- Add or skip adding a new cursor by matching word/selection
-keymap.set({'n', 'v'}, '<leader>n', function()
-  mc.matchAddCursor(1)
-end, options)
-
--- END: MultiCursor
-
--- Bufferline
-map('n', '<leader>1', '<cmd>BufferLineGoToBuffer 1<cr>', options)
-map('n', '<leader>2', '<cmd>BufferLineGoToBuffer 2<cr>', options)
-map('n', '<leader>3', '<cmd>BufferLineGoToBuffer 3<cr>', options)
-map('n', '<leader>4', '<cmd>BufferLineGoToBuffer 4<cr>', options)
-map('n', '<leader>5', '<cmd>BufferLineGoToBuffer 5<cr>', options)
-map('n', '<leader>6', '<cmd>BufferLineGoToBuffer 6<cr>', options)
-map('n', '<leader>7', '<cmd>BufferLineGoToBuffer 7<cr>', options)
-map('n', '<leader>8', '<cmd>BufferLineGoToBuffer 8<cr>', options)
-map('n', '<leader>9', '<cmd>BufferLineGoToBuffer 9<cr>', options)
-map('n', '<leader>$', '<cmd>BufferLineGoToBuffer $<cr>', options)
-
--- QuickNote (mapping inspiration got from vim-bookmark, just changed the `m` to `s`)
-map('n', '<leader>st', '<cmd>lua require("quicknote").ToggleNoteSigns()<cr>', options)
-map('n', '<leader>ss', '<cmd>lua require("quicknote").NewNoteAtCurrentLine()<cr>', options)
-map('n', '<leader>sd', '<cmd>lua require("quicknote").DeleteNoteAtCurrentLine()<cr>', options)
-map('n', '<leader>sf', '<cmd>Telescope quicknote scope=CurrentBuffer<cr>', options)
-map('n', '<leader>sa', '<cmd>lua require("quicknote").ListNotesForCurrentBuffer()<cr>', options)
-map('n', '<leader>sn', '<cmd>lua require("quicknote").JumpToNextNote()<cr>', options)
--- map('n', '<leader>sp', '<cmd>lua require("quicknote").JumpToPreviousNote()<cr>', options)
+-- map('n', '<leader>z', '<cmd>ZenMode<cr>', options)
 
 -- TODO: DRAFT
 -- keymap.set('n', '<c-a>', vim.lsp.buf.code_action, bufopts) -- this is working (but c-a mapping is for increment number)
