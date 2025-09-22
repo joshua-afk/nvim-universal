@@ -136,6 +136,13 @@ map('n', '<leader>ft', '<cmd>lua require("conform").format()<cr>', options)
 -- map('n', '<leader>d', '<cmd>NvimTreeClose<cr><cmd>DBUIToggle<cr>', options)
 map('n', '<leader>d', '<cmd>Neotree close<cr><cmd>DBUIToggle<cr>', options)
 
+-- FZF
+map('n', '<leader>fb', '<cmd>FzfLua buffers<cr>',   { desc = '[f]zf [b]uffers' })
+map('n', '<leader>ff', '<cmd>FzfLua files<cr>',     { desc = '[f]zf [f]ind files' })
+map('n', '<leader>fg', '<cmd>FzfLua live_grep<cr>', { desc = '[f]zf [g]rep' })
+map('n', '<leader>fo', '<cmd>FzfLua oldfiles<cr>', { desc = '[f]zf [o]ld files' })
+map('n', '<leader>fr', '<cmd>FzfLua resume<cr>',    { desc = '[f]zf [r]esume' })
+
 -- Git Blame
 map('n', '<leader>gb', ':GitBlameToggle <cr>', options)
 map('n', '<leader>go', ':GitBlameOpenCommitURL <cr>', options)
@@ -173,12 +180,12 @@ map('n', '<leader>sn', '<cmd>lua require("quicknote").JumpToNextNote()<cr>', opt
 
 -- Telescope (File Pickers)
 -- map('n', '<leader>ff', ':lua require("telescope.builtin").find_files() <cr>', options)
-map('n', '<leader>ff', ':lua require("telescope.builtin").find_files({layout_config={height=0.90,width=0.75}}) <cr>', options)
-map('n', '<leader>fg', ':lua require("telescope.builtin").live_grep() <cr>', options)
-map('n', '<leader>fb', ':lua require("telescope.builtin").buffers({layout_config={width=0.5}}) <cr>', options)
+-- map('n', '<leader>ff', ':lua require("telescope.builtin").find_files({layout_config={height=0.90,width=0.75}}) <cr>', options)
+-- map('n', '<leader>fg', ':lua require("telescope.builtin").live_grep() <cr>', options)
+-- map('n', '<leader>fb', ':lua require("telescope.builtin").buffers({layout_config={width=0.5}}) <cr>', options)
 map('n', '<leader>fh', ':lua require("telescope.builtin").help_tags() <cr>', options)
 map('n', '<leader>fl', ':lua require("telescope.builtin").highlights() <cr>', options)
-map('n', '<leader>fo', ':lua require("telescope.builtin").oldfiles() <cr>', options)
+-- map('n', '<leader>fo', ':lua require("telescope.builtin").oldfiles() <cr>', options)
 
 -- Telescope (Dir)
 map('n', '<leader>fdf', ':FileInDirectory <cr>', options)
@@ -190,7 +197,7 @@ map('n', '<leader>fc', ':lua require("telescope.builtin").git_commits() <cr>', o
 map('n', '<leader>fs', ':lua require("telescope.builtin").git_status() <cr>', options)
 
 -- Telescope (Misc)
-map('n', '<leader>fr', ':Telescope resume <cr>', options)
+-- map('n', '<leader>fr', ':Telescope resume <cr>', options)
 -- map('n', '<leader>snip', ':Telescope luasnip <cr>', { noremap = true })
 
 -- ToggleTerm

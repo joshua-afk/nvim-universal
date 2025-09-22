@@ -1,0 +1,7 @@
+# dots
+.git
+.yalc
+
+# dirs
+node_modules
+vendor
