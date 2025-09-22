@@ -1,6 +1,10 @@
 -- FIX: If the lsp does not work, try re-installing the `ruby-lsp` inside the
 --      mason when opening a project. (there might be a better way to do this,
 --      like changing the contents of the mason file directly)
+
+-- NVIM-LSPCONFIG
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#ruby_lsp
+
 local file_types = {
   "ruby",
   "eruby",
