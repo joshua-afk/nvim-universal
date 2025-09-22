@@ -1,0 +1,4 @@
+-- nvim-tree
+-- map('n', '<leader>e', '<cmd>DBUIClose<cr><cmd>NvimTreeToggle<cr>', options)
+-- map('n', '<leader>r', ':NvimTreeRefresh <cr>', options)
+-- map('n', '<leader>i', ':NvimTreeFindFile <cr>', options)
