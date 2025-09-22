@@ -1,14 +1,11 @@
 -- This plugin is used to align `relativenumber` number with `line numbers`
 
 local ft_ignore = require('ft_ignore')
+local utils = require('utils')
 
 local M = {
   "luukvbaal/statuscol.nvim",
 }
-
-function M.hl_str(hl, str)
-  return "%#" .. hl .. "#" .. str .. "%*"
-end
 
 function M.config()
   local statuscol = require("statuscol")
@@ -69,12 +66,12 @@ function M.config()
               local s_row, e_row = pos_list[1][1][2], pos_list[#pos_list][2][2]
 
               if vim.v.lnum >= s_row and vim.v.lnum <= e_row then
-                return M.hl_str("CursorLineNr", line)
+                return utils.hl_str("CursorLineNr", line)
               end
             end
 
-            return vim.fn.line(".") == vim.v.lnum and M.hl_str("CursorLineNr", line)
-              or M.hl_str("LineNr", line)
+            return vim.fn.line(".") == vim.v.lnum and utils.hl_str("CursorLineNr", line)
+              or utils.hl_str("LineNr", line)
           end,
           " ",
         },

@@ -2,8 +2,6 @@
 
 local M = {}
 
-function M.statuscol()
-  return { "help", "neo-tree", "toggleterm" }
-end
+M.statuscol = { "help", "neo-tree", "toggleterm" }
 
 return M

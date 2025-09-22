@@ -1,4 +1,5 @@
 -- Move faster with unique f/F indicators.
+
 local M = {
   'jinh0/eyeliner.nvim'
 }
