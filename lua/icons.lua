@@ -1,0 +1,2 @@
+-- Add the icons of diagnostic, arrows, symbol_kinds, mics
+-- REF: https://github.com/MariaSolOs/dotfiles/blob/main/.config/nvim/lua/icons.lua
