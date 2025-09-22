@@ -5,8 +5,14 @@ return {
     config = function()
       require('lualine').setup({
         enabled = true,
+        extensions = {
+          'neo-tree',
+        },
         options = {
-          theme = "catppuccin"
+          theme = "catppuccin",
+          -- disabled_filetypes = {
+          --   statusline = { 'neo-tree' },
+          -- },
         },
         sections = {
           lualine_c = {
