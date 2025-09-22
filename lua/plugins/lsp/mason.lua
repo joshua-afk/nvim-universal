@@ -27,7 +27,7 @@ function M.config()
       "eslint",
       "lua_ls",
       "ruby_lsp",
-      "stylelint_lsp", -- css, less, scss, sass
+      -- "stylelint_lsp", -- css, less, scss, sass
       "ts_ls",
 
       -- Linter

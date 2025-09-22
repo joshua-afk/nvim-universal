@@ -1,9 +1,9 @@
 local M = {
-  "f-person/git-blame.nvim"
+  'f-person/git-blame.nvim'
 }
 
 function M.config()
-  require("gitblame").setup({
+  require('gitblame').setup({
     enabled = false
   })
 end
