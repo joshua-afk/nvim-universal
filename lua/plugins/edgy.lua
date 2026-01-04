@@ -2,6 +2,7 @@
 
 local M = {
   "folke/edgy.nvim",
+  enabled = false,
   event = "VeryLazy",
   version = false,
   opts = {

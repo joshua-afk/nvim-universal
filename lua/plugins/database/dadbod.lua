@@ -1,9 +1,9 @@
 local M = {
-  "tpope/vim-dadbod",
+  'kristijanhusak/vim-dadbod-ui',
   dependencies = {
-    { "kristijanhusak/vim-dadbod-ui",         lazy = true },
-    { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
-  }
+    { 'tpope/vim-dadbod', lazy = true },
+    { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
+  },
 }
 
 function M.init()

@@ -26,6 +26,9 @@ snippet each "LOOP: For loop ruby way"
 		@collection.each do |c|
 			#
 		end
+    hash.each { |k, v|
+			#
+		end
 snippet for "LOOP: Sugar of each loop"
 		for c in @collection
 			#
@@ -90,3 +93,7 @@ snippet hash
 		# OR
 		grades = Hash.new
 		grades["Dorothy Doe"] = 9
+snippet p "CUSTOM: output text"
+		puts
+snippet pv "CUSTOM: interpolation output"
+		puts "${var}"

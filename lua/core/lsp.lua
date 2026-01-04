@@ -2,11 +2,12 @@ vim.lsp.config("*", {
   capabilities = require('blink.cmp').get_lsp_capabilities(),
 })
 
+
 vim.lsp.enable({
   "emmet_ls",
   "lua_ls",
   "ruby_lsp",
-  -- "stylelint_lsp",
+  "stylelint_lsp", -- conflicts with nvim-lint. check the file for more info.
   -- "eslint",
   -- "ts_ls",
 })
@@ -35,6 +36,11 @@ keymap.set('n', '<c-t>', function()
     -- Use api.nvim_feedkeys to simulate pressing <c-]>
     api.nvim_feedkeys(api.nvim_replace_termcodes("<c-]>", true, true, true), 'n', true)
   end
+end, options)
+
+keymap.set('n', '<c-s>', function()
+  cmd('split')
+  api.nvim_feedkeys(api.nvim_replace_termcodes("<c-]>", true, true, true), 'n', true)
 end, options)
 
 -- LSP TSX

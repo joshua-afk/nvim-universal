@@ -30,11 +30,12 @@ map('n', '<leader>vrc', ':vsplit $MYVIMRC <cr>', options)
 map('n', '<leader>w', ':w <cr>', options)
 map('n', '<leader>q', ':q <cr>', options)
 
--- Easier split navigation (QWERTY)
-map('n', '<c-j>', '<c-w><c-j>', options)
-map('n', '<c-k>', '<c-w><c-k>', options)
-map('n', '<c-l>', '<c-w><c-l>', options)
-map('n', '<c-h>', '<c-w><c-h>', options)
+-- -- Easier split navigation (QWERTY)
+-- NOTE: This conflicts with vim-tmux navigation `lua/plugins/tmux.lua`
+-- map('n', '<c-j>', '<c-w><c-j>', options)
+-- map('n', '<c-k>', '<c-w><c-k>', options)
+-- map('n', '<c-l>', '<c-w><c-l>', options)
+-- map('n', '<c-h>', '<c-w><c-h>', options)
 
 -- Remap beginning of the line
 map('n', '0', '^', options)
@@ -102,11 +103,20 @@ map('n', 'zz', 'zf%', options)
 -- Swith between 2 latest buffers
 map('n', '<tab>', '<c-6>', options)
 
+-- Quickfix list navigation
+map('n', ']q', '<cmd>cnext<cr>', options)
+map('n', '[q', '<cmd>cprev<cr>', options)
+
+-- Sort
+vim.keymap.set('v', '<leader>s', [[:sort<CR>]], { desc = 'Sort selected lines' })
+
 -- ===========================
 -- ===                     ===
 -- === DIAGNOSTICS KEYMAPS ===
 -- ===                     ===
 -- ===========================
+-- Diagnostic, Fixer, Formatter, Linter, LSP
+
 keymap.set('n', '<leader>K', function()
   local new_config = not vim.diagnostic.config().virtual_lines
   vim.diagnostic.config({ virtual_lines = new_config })
@@ -115,6 +125,8 @@ end, { desc = 'Toggle diagnostic virtual_lines' })
 keymap.set('n', '<leader>k', function()
   vim.diagnostic.open_float()
 end, options)
+
+map('n', '<leader>li', '<cmd>lua require("lint").try_lint()<cr>', options)
 
 -- ===========================
 -- ===                     ===
@@ -133,6 +145,7 @@ map('n', '<leader>7', '<cmd>BufferLineGoToBuffer 7<cr>', options)
 map('n', '<leader>8', '<cmd>BufferLineGoToBuffer 8<cr>', options)
 map('n', '<leader>9', '<cmd>BufferLineGoToBuffer 9<cr>', options)
 map('n', '<leader>$', '<cmd>BufferLineGoToBuffer $<cr>', options)
+map('n', '<leader>bk', '<cmd>bd<cr>', { desc = '[b]uffer [k]ill' })
 
 -- Chainsaw
 map('n', '<leader>cl', '<cmd>lua require("chainsaw").variableLog()<cr>', options)
@@ -151,11 +164,16 @@ map('n', '<leader>ft', '<cmd>lua require("conform").format()<cr>', options)
 map('n', '<leader>d', '<cmd>Neotree close<cr><cmd>DBUIToggle<cr>', options)
 
 -- FZF
-map('n', '<leader>fb', '<cmd>FzfLua buffers<cr>',   { desc = '[f]zf [b]uffers' })
-map('n', '<leader>ff', '<cmd>FzfLua files<cr>',     { desc = '[f]zf [f]ind files' })
-map('n', '<leader>fg', '<cmd>FzfLua live_grep<cr>', { desc = '[f]zf [g]rep' })
-map('n', '<leader>fo', '<cmd>FzfLua oldfiles<cr>', { desc = '[f]zf [o]ld files' })
-map('n', '<leader>fr', '<cmd>FzfLua resume<cr>',    { desc = '[f]zf [r]esume' })
+-- https://github.com/ibhagwan/fzf-lua?tab=readme-ov-file#commands
+map('n', '<leader>fb', '<cmd>FzfLua buffers<cr>',        { desc = '[f]zf [b]uffers' })
+map('n', '<leader>ff', '<cmd>FzfLua files<cr>',          { desc = '[f]zf [f]ind files' })
+map('v', '<leader>ff', '<cmd>FzfLua grep_visual<cr>',    { desc = '[f]zf [f]ind grep visual' })
+map('n', '<leader>fg', '<cmd>FzfLua live_grep<cr>',      { desc = '[f]zf [g]rep' })
+map('n', '<leader>fl', '<cmd>FzfLua lsp_references<cr>', { desc = '[f]zf [l]sp references' })
+map('n', '<leader>fo', '<cmd>FzfLua oldfiles<cr>',       { desc = '[f]zf [o]ld files' })
+map('n', '<leader>fr', '<cmd>FzfLua resume<cr>',         { desc = '[f]zf [r]esume' })
+map('n', '<leader>fw', '<cmd>FzfLua grep_cword<cr>',     { desc = '[f]zf grep [w]ord under cursor' })
+map('n', '<leader>gl', '<cmd>FzfLua git_bcommits<cr>',   { desc = 'Buffer [g]it [l]og' })
 
 -- Git Blame
 map('n', '<leader>gb', ':GitBlameToggle <cr>', options)
@@ -198,7 +216,7 @@ map('n', '<leader>sn', '<cmd>lua require("quicknote").JumpToNextNote()<cr>', opt
 -- map('n', '<leader>fg', ':lua require("telescope.builtin").live_grep() <cr>', options)
 -- map('n', '<leader>fb', ':lua require("telescope.builtin").buffers({layout_config={width=0.5}}) <cr>', options)
 map('n', '<leader>fh', ':lua require("telescope.builtin").help_tags() <cr>', options)
-map('n', '<leader>fl', ':lua require("telescope.builtin").highlights() <cr>', options)
+-- map('n', '<leader>fl', ':lua require("telescope.builtin").highlights() <cr>', options)
 -- map('n', '<leader>fo', ':lua require("telescope.builtin").oldfiles() <cr>', options)
 
 -- Telescope (Dir)

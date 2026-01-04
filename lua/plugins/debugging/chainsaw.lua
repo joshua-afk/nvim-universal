@@ -10,7 +10,7 @@ function M.config()
     logHighlightGroup = false,
     logStatements = {
       variableLog = {
-        javascript = "console.log('%s %s:', %s);",
+        javascript = "console.log('{{marker}} {{var}}:', {{var}});",
         ruby = {
           "puts '=========================================='",
           "pp '{{marker}} {{var}}:', {{var}}",

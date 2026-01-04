@@ -18,6 +18,7 @@ local plugins = {
   { import = "plugins.core" },
   { import = "plugins.database" },
   { import = "plugins.debugging" },
+  { import = "plugins.dependencies" },
   { import = "plugins.formatters" },
   { import = "plugins.git" },
   { import = "plugins.linters" },
@@ -32,7 +33,7 @@ local plugins = {
   'chrisbra/vim-diff-enhanced',
   'tpope/vim-surround',
   'tpope/vim-repeat',
-  'jiangmiao/auto-pairs',
+  -- 'jiangmiao/auto-pairs',
 
   -- Formatting
   'tommcdo/vim-lion', -- align text by some character
@@ -55,7 +56,6 @@ local plugins = {
   'joereynolds/sql-lint',
   'vim-python/python-syntax',
   'tbastos/vim-lua',
-  'ap/vim-css-color',
 
   -- Git
   -- 'tpope/vim-fugitive',

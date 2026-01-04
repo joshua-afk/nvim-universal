@@ -3,9 +3,11 @@
 
 -- NOTES:
 -- INSTALL THIS: `npm i -g stylelint-lsp`
---
--- This conflicts with nvim-lint on linting like 'stylelint'. The combination
--- is `lsp + mason` to make this work 
+
+-- This conflicts with `nvim-lint` when using linter like `stylelint`, which is currently working.
+-- This setup uses `lsp` and `mason` together to make this work.
+
+-- Can we make a callback to make this work on every project setup?
 
 local file_types = {
   "css",
@@ -16,6 +18,7 @@ local file_types = {
 
 local root_file = {
   ".git",
+  ".stylelintrc",
   ".stylelintrc.cjs",
   ".stylelintrc.js",
   ".stylelintrc.json",
@@ -27,7 +30,6 @@ local root_file = {
   "stylelint.config.cjs",
   "stylelint.config.js",
   "stylelint.config.mjs",
-  ".stylelintrc",
 }
 
 local M = {
@@ -36,11 +38,15 @@ local M = {
   settings = {
     stylelintplus = {
       -- OPTIONS: https://github.com/bmatcuk/stylelint-lsp?tab=readme-ov-file#settings
-      -- autoFixOnFormat = true,
-      -- autoFixOnSave = true
+      autoFixOnFormat = false,
+      autoFixOnSave = false,
+      cssInJs = false,
+      enable = true,
+      validateOnSave = false,
+      validateOnType = true,
     },
   },
-  root_dir = vim.fs.root(0, root_file),
+  root_markers = root_file,
 }
 
 return M

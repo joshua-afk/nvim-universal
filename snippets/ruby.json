@@ -43,6 +43,38 @@
       "puts '=========================================='"
     ]
   },
+  "CUSTOM: output text": {
+    "prefix": "p",
+    "body": [
+      "puts "
+    ]
+  },
+  "CUSTOM: output text with interpolation": {
+    "prefix": "pv",
+    "body": [
+      "puts '#{}'"
+    ]
+  },
+  "CUSTOM: read": {
+    "prefix": "read",
+    "body": [
+      "require 'json'\n",
+      "begin",
+      "\traw = File.read('./data.txt')",
+      "\tdata = JSON.parse(raw)",
+      "\tputs data",
+      "rescue Errno::ENOENT",
+      "\tputs 'File not found'",
+      "rescue JSON::ParserError",
+      "\tputs 'Invalid JSON'",
+      "end\n",
+      "# OR",
+      "File.foreach('./data.txt') do |line|",
+      "\tobj = JSON.parse(line)",
+      "\tputs obj",
+      "end"
+    ]
+  },
   "LOOP: Basic loop": {
     "prefix": "elsif",
     "body": "if one < two\n\t\t# code here\n\telsif two < one\n\t\t# code here\n\tend"
@@ -53,7 +85,10 @@
   },
   "LOOP: For loop ruby way": {
     "prefix": "each",
-    "body": "@collection.each do |c|\n\t\t#\n\tend"
+    "body": [
+      "@collection.each do |c|\n\t\t#\n\tend",
+      "each { |e| ${0} }"
+    ]
   },
   "LOOP: Sugar of each loop": {
     "prefix": "for",

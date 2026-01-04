@@ -6,9 +6,11 @@ local M = {
 }
 
 function M.config()
+  local pairs = require("mini.pairs")
   -- local statusline = require("mini.statusline")
-  --
   -- statusline.setup()
+
+  pairs.setup()
 end
 
 return M

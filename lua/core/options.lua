@@ -1,3 +1,5 @@
+local icons = require('icons')
+
 local o   = vim.o
 local opt = vim.opt
 
@@ -22,8 +24,6 @@ o.autoindent=true
 o.copyindent=true
 o.ignorecase=true
 o.smartcase=true
-o.splitbelow=true
-o.splitright=true
 o.showcmd=true
 o.viewoptions = o.viewoptions:gsub('options', '')
 o.mouse='a'
@@ -51,4 +51,35 @@ o.expandtab=true  -- Use spaces instead of tabs
 -- Fold
 o.foldmethod='manual'
 o.foldlevel=99
-o.foldenable=false
+o.foldmethod = "expr"
+
+-- Split
+o.splitbelow=true
+o.splitright=true
+o.splitkeep='cursor'
+
+-- o.foldexpr = "v:lua.vim.lsp.foldexpr()"
+-- o.foldlevel=99
+-- o.foldenable=false
+
+-- vim.o.fillchars = 'eob: ,fold: ,foldopen:,foldsep: ,foldclose:'
+-- vim.o.foldcolumn = '1'
+-- vim.o.foldenable = true
+-- vim.o.foldexpr = 'v:lua.vim.lsp.foldexpr()'
+-- vim.o.foldlevel = 99
+-- vim.o.foldlevelstart = 99
+-- vim.o.foldmethod = 'expr'
+
+-- Folding. (Working)
+-- vim.o.foldexpr = 'v:lua.vim.lsp.foldexpr()'
+-- vim.o.foldcolumn = '1'
+-- vim.o.foldlevelstart = 99
+-- vim.wo.foldtext = ''
+-- vim.opt.fillchars = {
+--     eob = ' ',
+--     fold = ' ',
+--     foldclose = icons.arrows.right,
+--     foldopen = icons.arrows.down,
+--     foldsep = ' ',
+--     msgsep = '─',
+-- }

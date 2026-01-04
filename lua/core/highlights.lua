@@ -1,9 +1,38 @@
-local api = vim.api
+local nvim_set_hl = vim.api.nvim_set_hl
 
+------------------------------
+-- NOTE: h nvim_set_hl()
+-- 0    = global {ns_id}
+-- name = Highlight group name, e.g. "ErrorMsg"
+-- val  = Highlight definition map (more values in help page)
+------------------------------
+
+-- h neo-tree-highlights
+nvim_set_hl(0, "NeoTreeFileNameOpened", { fg = "#c14a4a" })
+-- TODO: NeoTreeDirectoryName
+-- nvim_set_hl(0, "NeoTreeFileName", { fg = "#ff0000" })
+-- nvim_set_hl(0, "NeoTreeCursorLine", { fg = "#ff0000" })
+-- nvim_set_hl(0, "NeoTreeGitModified", { fg = "#d8a657" })
+
+-- neo-tree custom icons
+nvim_set_hl(0, "NeoTreeFolderApp", { fg = "#EF5350" })
+nvim_set_hl(0, "NeoTreeFolderNodeModules", { fg = "#8BC34A" })
+nvim_set_hl(0, "NeoTreeFolderTests", { fg = "#00BFA5" })
+
+-- h fzf-lua-highlight-groups
+
+-- TODO: add material colors here
+
+-- ===========================
+-- ===========================
+-- ===                     ===
+-- ===       ARCHIVE       ===
+-- ===                     ===
+-- ===========================
 -- catppuccin mocha colors
 local white = "#ffffff"
-local silver = "#AFB5BC"
-local tokyo_night_red = "#F7758E"
+local silver = "#afb5bc"
+local tokyo_night_red = "#f7758e"
 
 local mocha_blue = "#7daea3"
 local mocha_text = "#ebdbb2"
@@ -24,7 +53,6 @@ local mocha_overlay = "#bdae93"
 -- api.nvim_set_hl(0, "@variable.parameter.ruby", { fg = mocha_text })
 -- api.nvim_set_hl(0, "@lsp.type.method.ruby", { fg = mocha_blue })
 -- api.nvim_set_hl(0, "@function.call.ruby", { fg = mocha_green })
-
 
 -- CURRENT
 -- api.nvim_set_hl(0, "@variable.member.ruby", { fg = mocha_blue }) -- Initialized instance variable

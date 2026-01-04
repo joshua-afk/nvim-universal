@@ -12,7 +12,9 @@ function M.config()
     ---Set virtual symbol (requires render to be set to 'virtual')
     virtual_symbol = '■',
 
-    enable_tailwind = true
+    enable_tailwind = true,
+    enable_var_usage = true,
+    enable_named_colors = true,
   })
 end
 

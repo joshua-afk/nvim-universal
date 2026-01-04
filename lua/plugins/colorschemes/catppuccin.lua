@@ -12,6 +12,7 @@ local M = {
 
 local integrations = {
   cmp = false,
+  neotree = true,
   nvimtree = false,
   indent_blankline = {
     enabled = true,
@@ -33,6 +34,11 @@ function M.config()
       light = "latte",
       dark = "mocha",
     },
+    transparent_background = false,
+    float = {
+        transparent = false,
+        solid = false,
+    },
     dim_inactive = {
       enabled = true,
     },
@@ -43,7 +49,8 @@ function M.config()
   api.nvim_set_hl(0, "@type.ruby", { fg = mocha.yellow, bold = true }) -- Constant call
   api.nvim_set_hl(0, "@function.ruby", { fg = "#EED8DA"}) -- Method
 
-  vim.cmd.colorscheme "catppuccin-frappe"
+  -- vim.cmd.colorscheme "catppuccin-frappe"
+  vim.cmd.colorscheme "catppuccin-macchiato"
 end
 
 return M

@@ -8,10 +8,19 @@ loop = vim.loop
 o = vim.o
 opt = vim.opt
 
+g.nvim_version = '0.12.0'
+
 -- Self assigned global variables
 g.left_sidebar_width = 55
 
--- Disable providers
+-- Providers (https://neovim.io/doc/user/provider.html)
+local node_version = 'v20.19.0' -- stylelint-lsp works with this version
+local fnm = vim.env.HOME .. '/.local/share/fnm'
+local node_bin = fnm .. '/node-versions/' .. node_version .. '/installation/bin'
+
+vim.env.PATH = node_bin .. ':' .. vim.env.PATH
+vim.g.node_host_prog = node_bin .. '/node'
+
 g.loaded_perl_provider = 0
 
 -- Core
@@ -29,4 +38,4 @@ require 'auto-commands.auto-reload'
 require 'auto-commands.buffer'
 require 'auto-commands.cursor-line'
 -- require 'auto-commands.highlight-yank'
-require 'auto-commands.nvim-lint'
+-- require 'auto-commands.nvim-lint'

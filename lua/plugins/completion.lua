@@ -6,30 +6,50 @@ local M = {
   },
   version = '1.*',
   opts = {
-    -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
-    -- 'super-tab' for mappings similar to vscode (tab to accept)
-    -- 'enter' for enter to accept
-    -- 'none' for no mappings
-    --
-    -- All presets have the following mappings:
-    -- C-space: Open menu or open docs if already open
-    -- C-n/C-p or Up/Down: Select next/previous item
-    -- C-e: Hide menu
-    -- C-k: Toggle signature help (if signature.enabled = true)
-    --
-    -- See :h blink-cmp-config-keymap for defining your own keymap
     keymap = {
-      preset = 'default'
+      -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
+      -- 'super-tab' for mappings similar to vscode (tab to accept)
+      -- 'enter' for enter to accept
+      -- 'none' for no mappings
+      --
+      -- All presets have the following mappings:
+      -- C-space: Open menu or open docs if already open
+      -- C-n/C-p or Up/Down: Select next/previous item
+      -- C-e: Hide menu
+      -- C-k: Toggle signature help (if signature.enabled = true)
+      --
+      -- See :h blink-cmp-config-keymap for defining your own keymap
+      preset = 'super-tab',
+      keymap = {
+        -- ['<C-y>'] = { 'accept', 'fallback' },
+        -- ['<Tab>'] = { 'select_next', 'snippet_forward', 'fallback' },
+        ['<C-e>'] = { 'hide', 'fallback' },
+        ['<C-n>'] = { 'select_next', 'show' },
+        ['<C-p>'] = { 'select_prev' },
+        ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
+        ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
+      },
+      list = {
+        -- Insert items while navigating the completion list.
+        selection = {
+          preselect = false,
+          auto_insert = true
+        },
+        max_items = 10,
+      },
+      documentation = { auto_show = true },
+      menu = { scrollbar = false },
     },
     appearance = {
       nerd_font_variant = 'mono'
     },
     completion = {
-      -- ghost_text = {
-      --   enabled = true
-      -- },
+      ghost_text = {
+        enabled = false
+      },
       documentation = {
-        auto_show = false
+        auto_show = true,
+        auto_show_delay_ms = 200,
       }
     },
     sources = {
