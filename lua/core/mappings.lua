@@ -13,9 +13,22 @@ local map = api.nvim_set_keymap
 keymap.set("n", "<Space>", "<Nop>", { silent = true, remap = false })
 g.mapleader = " "
 
-keymap.set('n', '<leader><leader>', function()
-  cmd('e!')
-end, options)
+if IS_WINDOWS then
+  keymap.set('n', '<leader><leader>', function()
+    fn.jobstart({ 'explorer.exe', fn.expand('%:h') }, { detach = true })
+  end, { desc = 'Open folder in Explorer' })
+elseif IS_WSL then
+  keymap.set('n', '<leader><leader>', function()
+    local winpath = fn.system('wslpath -w ' .. fn.shellescape(fn.expand('%:h'))):gsub('\n', '')
+    fn.jobstart({ 'explorer.exe', winpath }, { detach = true })
+  end, { desc = 'Open folder in Explorer (WSL)' })
+elseif IS_LINUX then
+  keymap.set('n', '<leader><leader>', function()
+    fn.jobstart({ 'xdg-open', fn.expand('%:h') }, { detach = true })
+  end, { desc = 'Open folder in default file manager' })
+else
+  print 'No file manager set for this OS, check mappings.lua'
+end
 
 -- CTRL + Backspace to delete word in nvim
 -- NOTE: Disable Ctrl + Backspace mapping in alacritty
@@ -46,7 +59,7 @@ map('n', '^', '0', options)
 -- map('n', '<leader>b', ':bp <cr>', options)
 
 -- Copy to system clipboard
-if not fn.has('macunix') then
+if not IS_MAC then
   map('v', '<leader>y', '"+y', options)
   map('n', '<leader>Y', '"+yg_', options)
   map('n', '<leader>y', '"+y', options)
@@ -55,7 +68,7 @@ if not fn.has('macunix') then
 end
 
 -- Paste from system clipboard
-if fn.has('macunix') then
+if IS_MAC then
   keymap.set('n', '<leader>p', function()
     cmd('r !pbpaste')
   end, options)
