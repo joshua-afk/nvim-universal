@@ -116,6 +116,7 @@ map('n', '<leader>30', ':vertical resize 30 <cr>', options)
 
 -- Fast fold block of code
 map('n', 'zz', 'zf%', options)
+map('n', '<leader>fo', 'za', { noremap = true, silent = true, desc = '[fo]ld toggle' })
 
 -- Swith between 2 latest buffers
 map('n', '<tab>', '<c-6>', options)
