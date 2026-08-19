@@ -24,7 +24,11 @@ elseif IS_WSL then
   end, { desc = 'Open folder in Explorer (WSL)' })
 elseif IS_LINUX then
   keymap.set('n', '<leader><leader>', function()
-    fn.jobstart({ 'xdg-open', fn.expand('%:h') }, { detach = true })
+    if fn.executable('dolphin') == 1 then
+      fn.jobstart({ 'dolphin', '--select', fn.expand('%:p') }, { detach = true })
+    else
+      fn.jobstart({ 'xdg-open', fn.expand('%:h') }, { detach = true })
+    end
   end, { desc = 'Open folder in default file manager' })
 else
   print 'No file manager set for this OS, check mappings.lua'
