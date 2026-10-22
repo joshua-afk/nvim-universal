@@ -40,7 +40,7 @@ local plugins = {
 
   -- Navigation
   -- 'MattesGroeger/vim-bookmarks',
-  'psliwka/vim-smoothie',
+  -- 'psliwka/vim-smoothie',
 
   -- Linting
   -- 'sheerun/vim-polyglot',
