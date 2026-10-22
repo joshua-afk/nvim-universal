@@ -1,5 +1,5 @@
 -- Link and Reload nvim config (lua)
-vim.cmd('abb reload luafile %<Esc>')
+-- vim.cmd('abb reload luafile %<Esc>')
 
 -- Pane controls
 vim.cmd('abb vr vertical resize')
