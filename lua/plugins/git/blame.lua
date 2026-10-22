@@ -3,9 +3,11 @@ local M = {
 }
 
 function M.config()
-  require('gitblame').setup({
-    enabled = false
-  })
+  require('gitblame').setup(
+    {
+      enabled = true
+    }
+  )
 end
 
 return M
