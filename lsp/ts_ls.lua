@@ -39,11 +39,12 @@ local M = {
   --   root_pattern = vim.fs.root(0, root_file),
   -- },
   root_dir = function(bufnr, on_dir)
-    -- Give the root markers equal priority by wrapping them in a table
-    root_files = vim.fn.has(nvim_version) == 1 and { root_files, { '.git' } }
-      or vim.list_extend(root_files, { '.git' })
+    -- Give the root markers equal priority by wrapping them in a table (nested markers need nvim 0.11.3+)
+    -- Use a local copy, reassigning `root_files` would nest it deeper on every call
+    local markers = vim.fn.has('nvim-0.11.3') == 1 and { root_files, { '.git' } }
+      or vim.list_extend(vim.deepcopy(root_files), { '.git' })
     -- We fallback to the current working directory if no project root is found
-    local project_root = vim.fs.root(bufnr, root_files) or vim.fn.getcwd()
+    local project_root = vim.fs.root(bufnr, markers) or vim.fn.getcwd()
 
     on_dir(project_root)
   end,
