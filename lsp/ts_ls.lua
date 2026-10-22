@@ -48,9 +48,9 @@ local M = {
     on_dir(project_root)
   end,
   settings = {
-    preferences = {
-      quotePreference = 'auto'
-    },
+    -- preferences = {
+    --   quotePreference = 'auto'
+    -- },
   },
   single_file_support = false,
 }

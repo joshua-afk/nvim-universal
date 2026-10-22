@@ -35,7 +35,10 @@ local M = {
     '--stdio'
   },
   filetypes = file_types,
-  root_dir = vim.fs.root(0, root_file),
+  root_dir = function(bufnr, on_dir)
+    local project_root = vim.fs.root(bufnr, root_file) or vim.fn.getcwd()
+    on_dir(project_root)
+  end,
   settings = {
     codeAction = {
       disableRuleComment = {

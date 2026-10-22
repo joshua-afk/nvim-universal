@@ -2,14 +2,13 @@ vim.lsp.config("*", {
   capabilities = require('blink.cmp').get_lsp_capabilities(),
 })
 
-
 vim.lsp.enable({
   "emmet_ls",
   "lua_ls",
   "ruby_lsp",
   "stylelint_lsp", -- conflicts with nvim-lint. check the file for more info.
-  -- "eslint",
-  -- "ts_ls",
+  "eslint",
+  "ts_ls",
 })
 
 local options = { noremap = true, silent = true }
