@@ -62,10 +62,10 @@ map('n', '<leader>q', ':q <cr>', options)
 
 -- -- Easier split navigation (QWERTY)
 -- NOTE: This conflicts with vim-tmux navigation `lua/plugins/tmux.lua`
--- map('n', '<c-j>', '<c-w><c-j>', options)
--- map('n', '<c-k>', '<c-w><c-k>', options)
--- map('n', '<c-l>', '<c-w><c-l>', options)
--- map('n', '<c-h>', '<c-w><c-h>', options)
+map('n', '<c-j>', '<c-w><c-j>', options)
+map('n', '<c-k>', '<c-w><c-k>', options)
+map('n', '<c-l>', '<c-w><c-l>', options)
+map('n', '<c-h>', '<c-w><c-h>', options)
 
 -- Remap beginning of the line
 map('n', '0', '^', options)
@@ -171,6 +171,8 @@ map('n', '<leader>li', '<cmd>lua require("lint").try_lint()<cr>', options)
 -- ===                     ===
 -- ===========================
 
+map('n', '<leader>a', '<cmd>AerialToggle!<cr>', options)
+
 -- Bufferline
 map('n', '<leader>1', '<cmd>BufferLineGoToBuffer 1<cr>', options)
 map('n', '<leader>2', '<cmd>BufferLineGoToBuffer 2<cr>', options)
@@ -199,6 +201,35 @@ map('n', '<leader>ft', '<cmd>lua require("conform").format()<cr>', options)
 -- Dadbod UI
 -- map('n', '<leader>d', '<cmd>NvimTreeClose<cr><cmd>DBUIToggle<cr>', options)
 map('n', '<leader>d', '<cmd>Neotree close<cr><cmd>DBUIToggle<cr>', options)
+
+-- Dial
+vim.keymap.set("n", "<C-a>", function()
+    require("dial.map").manipulate("increment", "normal")
+end)
+vim.keymap.set("n", "<C-x>", function()
+    require("dial.map").manipulate("decrement", "normal")
+end)
+vim.keymap.set("n", "g<C-a>", function()
+    require("dial.map").manipulate("increment", "gnormal")
+end)
+vim.keymap.set("n", "g<C-x>", function()
+    require("dial.map").manipulate("decrement", "gnormal")
+end)
+vim.keymap.set("x", "<C-a>", function()
+    require("dial.map").manipulate("increment", "visual")
+end)
+vim.keymap.set("x", "<C-x>", function()
+    require("dial.map").manipulate("decrement", "visual")
+end)
+vim.keymap.set("x", "g<C-a>", function()
+    require("dial.map").manipulate("increment", "gvisual")
+end)
+vim.keymap.set("x", "g<C-x>", function()
+    require("dial.map").manipulate("decrement", "gvisual")
+end)
+-- map('n', '<c-a>', '<cmd>lua require("conform").format()<cr>', options)
+-- nnoremap  <C-a> <Plug>(dial-increment)
+-- nnoremap  <C-x> <Plug>(dial-decrement)
 
 -- FZF
 -- https://github.com/ibhagwan/fzf-lua?tab=readme-ov-file#commands
