@@ -134,7 +134,7 @@ function M.config()
         with_markers = true,
         indent_marker = icons.lines.vertical,
         last_indent_marker = icons.lines.vertical_end,
-        indent_size = 2,
+        indent_size = g.file_tree_indent,
       },
       diagnostics = diagnostics_config,
     },

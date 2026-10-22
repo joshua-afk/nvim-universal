@@ -20,6 +20,8 @@ _G.IS_WSL = IS_LINUX and uname.release:find 'Microsoft' and true or false
 
 -- Self assigned global variables
 g.left_sidebar_width = 55
+g.right_sidebar_width = 55
+g.file_tree_indent = 3
 
 -- Providers (https://neovim.io/doc/user/provider.html)
 local node_version = 'v20.19.0' -- stylelint-lsp works with this version
