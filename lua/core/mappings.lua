@@ -1,4 +1,5 @@
 local options = { noremap = true, silent = true }
+
 local map = api.nvim_set_keymap
 
 -- local bufopts = { noremap = true, silent = true, buffer = bufnr }
@@ -184,7 +185,8 @@ map('n', '<leader>7', '<cmd>BufferLineGoToBuffer 7<cr>', options)
 map('n', '<leader>8', '<cmd>BufferLineGoToBuffer 8<cr>', options)
 map('n', '<leader>9', '<cmd>BufferLineGoToBuffer 9<cr>', options)
 map('n', '<leader>$', '<cmd>BufferLineGoToBuffer $<cr>', options)
-map('n', '<leader>bk', '<cmd>bd<cr>', { desc = '[b]uffer [k]ill' })
+map('n', '<leader>x', '<cmd>bd<cr>', { desc = '[b]uffer [k]ill' })
+map('n', '<leader>X', '<cmd>BufferLineCloseOthers<cr>', { desc = 'buffer close others' })
 
 -- Chainsaw
 map('n', '<leader>cl', '<cmd>lua require("chainsaw").variableLog()<cr>', options)
@@ -200,7 +202,10 @@ map('n', '<leader>ft', '<cmd>lua require("conform").format()<cr>', options)
 
 -- Dadbod UI
 -- map('n', '<leader>d', '<cmd>NvimTreeClose<cr><cmd>DBUIToggle<cr>', options)
-map('n', '<leader>d', '<cmd>Neotree close<cr><cmd>DBUIToggle<cr>', options)
+keymap.set('n', '<leader>d', function()
+  vim.cmd('Neotree close')
+  vim.cmd('DBUIToggle')
+end, options)
 
 -- Dial
 vim.keymap.set("n", "<C-a>", function()
@@ -249,6 +254,21 @@ map('n', '<leader>go', ':GitBlameOpenCommitURL <cr>', options)
 
 -- Git Blame
 map('n', '<leader>gd', '<cmd>Gdiffsplit<cr>', options)
+
+-- Git Signs
+map('n', '<leader>h', '<cmd>Gitsigns preview_hunk<cr>', { desc = 'gitsign preview [h]unk' })
+map('n', '[g', '<cmd>Gitsigns nav_hunk prev<cr>', { desc = 'Gitsign jump to prev git hunk' })
+map('n', ']g', '<cmd>Gitsigns nav_hunk next<cr>', { desc = 'Gitsign jump to next git hunk' })
+
+-- Indent Blankline
+-- Toggle UI related enhancements
+keymap.set('n', '<leader>u', function()
+  vim.cmd('IBLToggle')
+  vim.cmd('GitBlameToggle')
+  vim.cmd('Gitsigns toggle_signs')
+  vim.cmd('IlluminateToggle')
+  vim.cmd('lua vim.diagnostic.enable(not vim.diagnostic.is_enabled())')
+end, options)
 
 -- Lazygit
 map('n', '<leader>lg', ':LazyGit <cr>', options)
@@ -306,11 +326,11 @@ map('n', '<leader>fs', ':lua require("telescope.builtin").git_status() <cr>', op
 -- map('n', '<leader>ft', ':ToggleTerm<cr>', options)
 
 -- Undotree
-map('n', '<leader>u', ':lua require("undotree").toggle() <cr>', options)
+-- map('n', '<leader>u', ':lua require("undotree").toggle() <cr>', options)
 
 -- vim-test (list of commands: https://github.com/vim-test/vim-test?tab=readme-ov-file#setup)
 map('n', '<leader>tt', '<cmd>TestNearest<cr>', options)
-map('n', '<leader>TT', '<cmd>TestFile<cr>', options)
+map('n', '<leader>tT', '<cmd>TestFile<cr>', options)
 
 -- ===========================
 -- ===                     ===
@@ -360,3 +380,6 @@ map('n', '<leader>js', ':e %:r.js <cr>', options)
 -- " Map it to a key
 -- nnoremap J :call <sid>join_spaceless()<cr>
 -- ]]
+
+-- Go to file (gf shortcut to 2 mouse clicks)
+vim.keymap.set('n', '<2-LeftMouse>', 'gf', { noremap = true, silent = true })
