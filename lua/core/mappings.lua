@@ -13,6 +13,19 @@ local map = api.nvim_set_keymap
 keymap.set("n", "<Space>", "<Nop>", { silent = true, remap = false })
 g.mapleader = " "
 
+-- Terminal Mode keymaps
+-- Press Esc key to enter normal mode, only when Claude Code is the foreground process,
+-- otherwise pass Esc through to the app (e.g. lazygit). Uses Linux /proc.
+keymap.set('t', '<Esc>', function()
+  local ok, comm = pcall(function()
+    local stat = vim.fn.readfile('/proc/' .. vim.fn.jobpid(vim.bo.channel) .. '/stat')[1]
+    -- tpgid (terminal foreground process group) is the 6th field after "(comm)"
+    local tpgid = vim.split(vim.trim(stat:match('.*%)(.*)')), ' ')[6]
+    return vim.fn.readfile('/proc/' .. tpgid .. '/comm')[1]
+  end)
+  return (ok and comm == 'claude') and [[<C-\><C-n>]] or '<Esc>'
+end, { expr = true, silent = true, desc = 'Esc to normal mode in Claude Code terminal' })
+
 if IS_WINDOWS then
   keymap.set('n', '<leader><leader>', function()
     fn.jobstart({ 'explorer.exe', fn.expand('%:h') }, { detach = true })
@@ -119,7 +132,13 @@ map('n', 'zz', 'zf%', options)
 map('n', '<leader>fo', 'za', { noremap = true, silent = true, desc = '[fo]ld toggle' })
 
 -- Swith between 2 latest buffers
-map('n', '<tab>', '<c-6>', options)
+-- Skip terminal buffers (e.g. :shell tab from ctrl_s_shell) and unlisted alternates,
+-- otherwise the :shell tab gets hijacked and <C-s> spawns a new tabpage each time
+keymap.set('n', '<tab>', function()
+  local alt = vim.fn.bufnr('#')
+  if vim.bo.buftype == 'terminal' or alt == -1 or not vim.bo[alt].buflisted then return end
+  vim.cmd('buffer #')
+end, { silent = true, desc = 'Switch to alternate buffer' })
 
 -- Quickfix list navigation
 map('n', ']q', '<cmd>cnext<cr>', options)

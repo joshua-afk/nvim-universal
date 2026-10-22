@@ -49,3 +49,5 @@ require 'auto-commands.buffer'
 require 'auto-commands.cursor-line'
 -- require 'auto-commands.highlight-yank'
 -- require 'auto-commands.nvim-lint'
+
+require 'ctrl_s_shell'

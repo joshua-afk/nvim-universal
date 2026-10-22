@@ -37,10 +37,10 @@ keymap.set('n', '<c-t>', function()
   end
 end, options)
 
-keymap.set('n', '<c-s>', function()
-  cmd('split')
-  api.nvim_feedkeys(api.nvim_replace_termcodes("<c-]>", true, true, true), 'n', true)
-end, options)
+-- keymap.set('n', '<c-s>', function()
+--   cmd('split')
+--   api.nvim_feedkeys(api.nvim_replace_termcodes("<c-]>", true, true, true), 'n', true)
+-- end, options)
 
 -- LSP TSX
 map('n', '<leader>tsi', '<cmd>TSToolsAddMissingImports<cr>', options)
