@@ -265,9 +265,11 @@ end, options)
 -- MultiCursor:END --
 
 -- Neo-Tree
--- map('n', '<leader>e', '<cmd>Neotree toggle<cr>', options)
-map('n', '<leader>e', '<cmd>DBUIClose<cr><cmd>Neotree toggle<cr>', options)
-map('n', '<leader>i', '<cmd>Neotree reveal<cr>', options)
+keymap.set('n', '<leader>e', function()
+  vim.cmd('DBUIClose')
+  vim.cmd('Neotree float toggle')
+end, options)
+map('n', '<leader>i', '<cmd>Neotree float reveal<cr>', options)
 
 -- QuickNote (mapping inspiration got from vim-bookmark, just changed the `m` to `s`)
 map('n', '<leader>st', '<cmd>lua require("quicknote").ToggleNoteSigns()<cr>', options)
