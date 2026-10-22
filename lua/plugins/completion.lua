@@ -19,9 +19,10 @@ local M = {
       -- C-k: Toggle signature help (if signature.enabled = true)
       --
       -- See :h blink-cmp-config-keymap for defining your own keymap
-      preset = 'super-tab',
+      -- preset = 'super-tab',
       keymap = {
-        -- ['<C-y>'] = { 'accept', 'fallback' },
+        -- ['<Right>'] = { 'accept', 'fallback' }, -- Moonlander 
+        ['<C-y>'] = { 'accept', 'fallback' }, -- QWERTY
         -- ['<Tab>'] = { 'select_next', 'snippet_forward', 'fallback' },
         ['<C-e>'] = { 'hide', 'fallback' },
         ['<C-n>'] = { 'select_next', 'show' },
