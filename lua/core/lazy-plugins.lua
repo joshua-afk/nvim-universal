@@ -14,6 +14,7 @@ opt.rtp:prepend(lazypath)
 
 local plugins = {
   { import = "plugins" },
+  { import = "plugins.ai" },
   { import = "plugins.colorschemes.init" },
   { import = "plugins.core" },
   { import = "plugins.database" },
