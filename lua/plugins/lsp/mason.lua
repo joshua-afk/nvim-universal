@@ -29,7 +29,7 @@ function M.config()
       -- https://github.com/LazyVim/LazyVim/discussions/2732#discussioncomment-9430435
       -- {'eslint-lsp', version = '4.8.0' },
       "lua_ls",
-      "ruby_lsp",
+      -- "ruby_lsp",
       -- "stylelint_lsp", -- css, less, scss, sass
       "ts_ls",
 

@@ -17,7 +17,15 @@ local root_file = {
 }
 
 local M = {
-  cmd = { "ruby-lsp" },
+  cmd = { 'mise', 'x', '--', 'ruby-lsp' },
+  -- cmd = { "ruby-lsp" },
+  -- cmd = function(dispatchers, config)
+  --   return vim.lsp.rpc.start(
+  --     { 'ruby-lsp' },
+  --     dispatchers,
+  --     config and config.root_dir and { cwd = config.cmd_cwd or config.root_dir }
+  --   )
+  -- end,
   filetypes = file_types,
   root_dir = vim.fs.root(0, root_file),
   init_options = {
