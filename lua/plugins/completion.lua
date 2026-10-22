@@ -20,16 +20,19 @@ local M = {
       --
       -- See :h blink-cmp-config-keymap for defining your own keymap
       -- preset = 'super-tab',
-      keymap = {
-        -- ['<Right>'] = { 'accept', 'fallback' }, -- Moonlander 
-        ['<C-y>'] = { 'accept', 'fallback' }, -- QWERTY
-        -- ['<Tab>'] = { 'select_next', 'snippet_forward', 'fallback' },
-        ['<C-e>'] = { 'hide', 'fallback' },
-        ['<C-n>'] = { 'select_next', 'show' },
-        ['<C-p>'] = { 'select_prev' },
-        ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
-        ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
-      },
+      -- ['<Right>'] = { 'accept', 'fallback' }, -- Moonlander
+      ['<C-y>'] = { 'accept', 'fallback' }, -- QWERTY
+      -- ['<Tab>'] = { 'select_next', 'snippet_forward', 'fallback' },
+      ['<C-e>'] = { 'hide', 'fallback' },
+      ['<C-n>'] = { 'select_next', 'show' },
+      ['<C-p>'] = { 'select_prev' },
+      ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
+      ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
+    },
+    appearance = {
+      nerd_font_variant = 'mono'
+    },
+    completion = {
       list = {
         -- Insert items while navigating the completion list.
         selection = {
@@ -38,13 +41,7 @@ local M = {
         },
         max_items = 10,
       },
-      documentation = { auto_show = true },
       menu = { scrollbar = false },
-    },
-    appearance = {
-      nerd_font_variant = 'mono'
-    },
-    completion = {
       ghost_text = {
         enabled = false
       },
