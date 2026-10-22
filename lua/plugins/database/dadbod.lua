@@ -1,3 +1,6 @@
+-- Mappings reference:
+-- https://github.com/kristijanhusak/vim-dadbod-ui?tab=readme-ov-file#mappings
+
 local M = {
   'kristijanhusak/vim-dadbod-ui',
   dependencies = {
