@@ -14,10 +14,14 @@ vim.diagnostic.config {
   -- h diagnostic-signs
   signs = {
     text = {
-      [vim.diagnostic.severity.ERROR] = icons.diagnostics.ERROR,
-      [vim.diagnostic.severity.WARN] = icons.diagnostics.WARN,
-      [vim.diagnostic.severity.HINT] = icons.diagnostics.HINT,
-      [vim.diagnostic.severity.INFO] = icons.diagnostics.INFO,
+      [vim.diagnostic.severity.ERROR] = icons.lines.vertical_left,
+      [vim.diagnostic.severity.WARN]  = icons.lines.vertical_left,
+      [vim.diagnostic.severity.HINT]  = icons.lines.vertical_left,
+      [vim.diagnostic.severity.INFO]  = icons.lines.vertical_left,
+      -- [vim.diagnostic.severity.ERROR] = icons.diagnostics.ERROR,
+      -- [vim.diagnostic.severity.WARN]  = icons.diagnostics.WARN,
+      -- [vim.diagnostic.severity.HINT]  = icons.diagnostics.HINT,
+      -- [vim.diagnostic.severity.INFO]  = icons.diagnostics.INFO,
     },
   }
 }
