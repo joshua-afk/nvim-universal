@@ -9,8 +9,9 @@ o.conceallevel=2
 -- Ruler
 -- o.cc='80'
 
--- Text wrap (soft-wrap)
+-- Hard-wrap at 80 columns, no soft-wrap
+-- (set `wrap` & `linebreak` to `true` to soft-wrap long lines instead)
 opt.textwidth=80
 opt.wrapmargin=0
-opt.wrap=true
-opt.linebreak=true
+opt.wrap=false
+opt.linebreak=false
