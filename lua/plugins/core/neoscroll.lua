@@ -7,7 +7,7 @@ function M.config()
   local ns = require('neoscroll')
 
   ns.setup {
-    mappings = { '<C-u>', '<C-d>', '<C-y>', '<C-e>', },
+    mappings = { '<C-u>', '<C-d>' },
     hide_cursor = true,          -- Hide cursor while scrolling
     stop_eof = true,             -- Stop at <EOF> when scrolling downwards
     respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
