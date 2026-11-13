@@ -21,7 +21,7 @@ local M = {
       -- See :h blink-cmp-config-keymap for defining your own keymap
       -- preset = 'super-tab',
       -- ['<Right>'] = { 'accept', 'fallback' }, -- Moonlander
-      ['<C-y>'] = { 'accept', 'fallback' }, -- QWERTY
+      ['<C-y>'] = { 'select_and_accept', 'fallback' }, -- QWERTY
       -- ['<Tab>'] = { 'select_next', 'snippet_forward', 'fallback' },
       ['<C-e>'] = { 'hide', 'fallback' },
       ['<C-n>'] = { 'select_next', 'show' },
